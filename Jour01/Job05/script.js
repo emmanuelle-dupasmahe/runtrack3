@@ -1,7 +1,7 @@
 function afficherjourssemaines() {
-    const semaine = ["lundi", "mardi", "mercredi", "jeudi", "vendredi"];
-    for (let i = 0; i < semaine.length; i++) {
-    console.log(semaine[i]);
+    const jourssemaines = ["lundi", "mardi", "mercredi", "jeudi", "vendredi"];
+    for (let i = 0; i < jourssemaines.length; i++) {
+    console.log(jourssemaines[i]);
     }
 }
 afficherjourssemaines();
