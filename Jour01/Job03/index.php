@@ -6,7 +6,7 @@
     <title>Document</title>
     <!--
     onverture balise avec attribut inline
-    <script src="./scropt.js">
+    <script src="./script.js">
         fermeture </script>
 -->
     <script src="./script.js"></script> 
