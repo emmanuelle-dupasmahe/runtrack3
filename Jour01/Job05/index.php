@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Les Années grégoriennes</title>
+    <title>Les jours de la semaine</title>
     <!--
     onverture balise avec attribut inline
     <script src="./script.js">
