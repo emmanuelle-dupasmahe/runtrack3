@@ -1,16 +1,16 @@
 function jourtravaille(date) {
-    const joursFeries2020 = [
-        "2020-01-01", 
-        "2020-04-13", 
-        "2020-05-01", 
-        "2020-05-08", 
-        "2020-05-21", 
-        "2020-06-01", 
-        "2020-07-14", 
-        "2020-08-15", 
-        "2020-11-01",
-        "2020-11-11", 
-        "2020-12-25"  
+    const joursFeries2026 = [
+        "2026-01-01", 
+        "2026-04-06", 
+        "2026-05-01", 
+        "2026-05-08", 
+        "2026-05-14", 
+        "2026-05-25", 
+        "2026-07-14", 
+        "2026-08-15", 
+        "2026-11-01", 
+        "2026-11-11", 
+        "2026-12-25"  
     ];
 
     const jour = date.getDate();
@@ -22,24 +22,24 @@ function jourtravaille(date) {
     const dateAffichee = `${jour} ${mois} ${annee}`;
 
     
-    if (joursFeries2020.includes(formatAAAAMMJJ)) {
+    if (joursFeries2026.includes(formatAAAAMMJJ)) {
         console.log(`Le ${dateAffichee} est un jour férié.`);
         return; 
     }
 
     const jourSemaine = date.getDay();
     if (jourSemaine === 6 || jourSemaine === 0) { // 6 = samedi, 0 = dimanche
-        console.log(`Non,le ${dateAffichee} est jour de week-end.`);
+        console.log(`Non,le ${dateAffichee} est un jour de week-end.`);
         return; 
     }
 
     console.log(`Oui, ${dateAffichee} est un jour travaillé.`);
 }
 
-jourtravaille(new Date("2020-05-01"));
+jourtravaille(new Date("2026-05-01")); 
 
 
-jourtravaille(new Date("2020-10-31"));
+jourtravaille(new Date("2026-01-17"));
 
 
-jourtravaille(new Date("2020-11-04"));
+jourtravaille(new Date("2026-01-12"));
