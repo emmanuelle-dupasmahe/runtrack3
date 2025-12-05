@@ -7,7 +7,7 @@
      <script src="./script.js"></script> 
 </head>
 <body>
-    <div id ="article">La vie a beaucoup plus d’imagination que nous.</div>
-     <button onclick="toggleBoite()">Afficher/Masquer</button>
+    <article id ="citation">La vie a beaucoup plus d’imagination que nous.</article>
+    <button onclick="citation()" id="bouton">Clique-moi</button>
 </body>
 </html>

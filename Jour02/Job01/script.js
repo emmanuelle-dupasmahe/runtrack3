@@ -1,12 +1,9 @@
-function toggleBoite() {
-    let boite = document.getElementById('boite');
-    
-    console.log(boite);
-
-    // Si elle est visible, on la masque
-    if (boite.style.display === 'none') {
-        boite.style.display = 'block';
-    } else {
-        boite.style.display = 'none';
-    }
+function citation() {
+  const article = document.getElementById("citation");
+  if (article) {
+    const contenuCitation = article.textContent;
+    console.log(contenuCitation);
+  } else {
+    console.error("L'élément avec l'ID 'citation' n'a pas été trouvé.");
+  }
 }
