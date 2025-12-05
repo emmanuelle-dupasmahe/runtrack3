@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>body de 4096 px avec un footer qui change de couleur</title>
+    <title>code konami pour que la page d'index s'affiche en style La Plateforme_</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
