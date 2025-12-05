@@ -7,7 +7,7 @@
      <script src="./script.js"></script> 
 </head>
 <body>
-    <div id ="boite"style="display: block;">Je suis une boite !</div>
-     <button onclick="toggleBoite()">Afficher/Masquer</button>
+    <div id ="boite" style="display: block;">Je suis une boite !</div>
+    <button onclick="toggleBoite()">Afficher/Masquer</button>
 </body>
 </html>

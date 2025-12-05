@@ -1,6 +1,6 @@
 function toggleBoite() {
     let boite = document.getElementById('boite');
-    
+
     console.log(boite);
 
     // Si elle est visible, on la masque

@@ -1,12 +1,18 @@
-function toggleBoite() {
-    let boite = document.getElementById('article');
+function showhide() {
+            const container = document.body; 
+            const existingArticle = document.querySelector('.message-article');
 
-    console.log(boite);
-
-    // Si elle est visible, on la masque
-    if (boite.style.display === 'none') {
-        boite.style.display = 'block';
-    } else {
-        boite.style.display = 'none';
-    }
-}
+            if (existingArticle) {
+                existingArticle.remove();
+                document.getElementById('button').textContent = "Afficher l'Article"; 
+            } else {
+                const newArticle = document.createElement('article');
+                newArticle.classList.add('message-article'); 
+                newArticle.textContent = "L'important n'est pas la chute, mais l'atterrissage.";
+                container.appendChild(newArticle); 
+                document.getElementById('button').textContent = "Masquer l'Article";
+            }
+        }
+        document.getElementById('button').addEventListener('click', showhide);
+        document.getElementById('button').textContent = "Afficher l'Article";
+        

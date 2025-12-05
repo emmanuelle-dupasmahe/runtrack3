@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>afficher et masquer</title>
-     <script src="./script.js"></script> 
+    <title>afficher et masquer une citation</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <article id ="citation">L'important n'est pas la chute, mais l'atterrissage.</article>
-    <div id ="button">Afficher/Masquer</div>
-    <button onclick="showhide()">Afficher/Masquer</button>
-
+    <button id ="button">Afficher/Masquer l'article</button>
+    <script src="./script.js"></script>
 </body>
 </html>
