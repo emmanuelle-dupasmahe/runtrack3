@@ -1,18 +1,22 @@
-function showhide() {
-            const container = document.body; 
-            const existingArticle = document.querySelector('.message-article');
+const footer = document.getElementById('scroll-progress');
+function updateScrollProgress() {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+    let progressPercentage = 0;
 
-            if (existingArticle) {
-                existingArticle.remove();
-                document.getElementById('button').textContent = "Afficher l'Article"; 
-            } else {
-                const newArticle = document.createElement('article');
-                newArticle.classList.add('message-article'); 
-                newArticle.textContent = "L'important n'est pas la chute, mais l'atterrissage.";
-                container.appendChild(newArticle); 
-                document.getElementById('button').textContent = "Masquer l'Article";
-            }
-        }
-        document.getElementById('button').addEventListener('click', showhide);
-        document.getElementById('button').textContent = "Afficher l'Article";
-        
+   
+    if (scrollHeight > 0) {
+        progressPercentage = (scrollTop / scrollHeight) * 100;
+    }
+
+    
+    progressPercentage = Math.min(100, Math.max(0, progressPercentage));
+    const hue = (progressPercentage / 100) * 120; // 0% -> 0 (Rouge); 100% -> 120 (Vert)
+    
+    
+    footer.style.backgroundColor = `hsl(${hue}, 70%, 50%)`;
+    footer.textContent = `${Math.round(progressPercentage)}%`;
+}
+
+window.addEventListener('scroll', updateScrollProgress);
+updateScrollProgress();
