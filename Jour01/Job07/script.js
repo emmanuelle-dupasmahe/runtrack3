@@ -18,7 +18,7 @@ function jourtravaille(date) {
     const annee = date.getFullYear();
 
     
-    const formatAAAAMMJJ = `${annee}-${String(mois).padStart(2, '0')}-${String(jour).padStart(2, '0')}`;
+    const formatAAAAMMJJ = `${annee}-${String(mois).padStart(2, '0')}-${String(jour).padStart(2, '0')}`;//padStart permet de compléter la chaîne courante avec une chaîne de caractères donnée afin d'obtenir une chaîne de longueur fixée.
     const dateAffichee = `${jour} ${mois} ${annee}`;
 
     
