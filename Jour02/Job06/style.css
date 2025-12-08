@@ -1,23 +1,53 @@
+
+:root {
+    --plateforme-blue: #0077ff; 
+    --plateforme-white: #ffffff; 
+    --plateforme-dark: #333333; 
+}
+
+/* Styles par défaut du corps (avant le Code Konami)  */
 body {
-            font-family: Arial, sans-serif;
-            height: 4096px;
-        }
-        
+    font-family: Arial, sans-serif;
+    color: var(--plateforme-dark);
+    margin: 0;
+    padding: 20px;
+    background-color: var(--plateforme-white);
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
 h1 {
-    color: rgb(11, 108, 76);
+    color: var(--plateforme-blue);
+    font-size: 2.5em;
+    font-weight: 800; /* Très gras */
+}
+
+/* Style Appliqué après le Code Konami (la-plateforme-style) */
+
+body.la-plateforme-style {
+   
+    background-color: var(--plateforme-blue); 
+    color: var(--plateforme-white);
+    padding: 0;
+    min-height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    margin-top: 100px;
+}
+
+body.la-plateforme-style h1 {
+    
+    color: var(--plateforme-white); 
+   
+    font-size: 3em; 
+    font-weight: 900; 
+    line-height: 1.2;
+    margin-bottom: 20px;
 }
 
 
-#scroll-progress {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%; 
-    height: 50px;
-    z-index: 1000;
-    color: white;
-    text-align: center;
-    line-height: 50px; 
+body.la-plateforme-style a {
+    color: var(--plateforme-white);
+    text-decoration: underline;
 }

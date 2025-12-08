@@ -1,6 +1,6 @@
 const konamiCode= [
-    "ArrowUp", "ArrowUp", 
-    "ArrowDown", "ArrowDown", 
+    "ArrowUp", "ArrowUp",  
+    "ArrowDown", "ArrowDown",
     "ArrowLeft", "ArrowRight", 
     "ArrowLeft", "ArrowRight", 
     "b", "a"
@@ -14,9 +14,11 @@ document.addEventListener("keydown", (e) => {
 
     if (key === konamiCode[konamiIndex]) {
         konamiIndex++;
-        clearTimeout(konamiTimeout);
+        clearTimeout(konamiTimeout); 
+        
+        
         konamiTimeout = setTimeout(() => {
-            console.log("Délai dépassé. Séquence réinitialisée.");
+            console.log("⌚ Délai dépassé. Séquence réinitialisée.");
             konamiIndex = 0; 
         }, timeoutDuree);
 
@@ -28,14 +30,18 @@ document.addEventListener("keydown", (e) => {
 
     } else {
        
+        if (konamiIndex > 0) {
+            console.log(`❌ Touche incorrecte (${key}). Séquence réinitialisée à 0.`);
+        }
+        
         konamiIndex = 0;
         clearTimeout(konamiTimeout);
-        if (key === konamiCode[0]) {
-             konamiIndex = 1; 
-             konamiTimeout = setTimeout(() => {
-                konamiIndex = 0;
-             }, timeoutDuree);
-        }
     }
     console.log("Progression Konami :", konamiIndex);
 });
+function applyLaPlateformeStyle() {
+    if (!document.body.classList.contains("la-plateforme-style")) {
+        document.body.classList.add("la-plateforme-style");
+        console.log("🎉 Code Konami validé ! Le style a été appliqué.");
+    }
+}

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h1>Bienvenue ! Faites le code...</h1>
     <script src="./script.js"></script>
 </body>
 </html>
