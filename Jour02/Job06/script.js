@@ -43,5 +43,17 @@ function applyLaPlateformeStyle() {
     if (!document.body.classList.contains("la-plateforme-style")) {
         document.body.classList.add("la-plateforme-style");
         console.log("🎉 Code Konami validé ! Le style a été appliqué.");
+
+        const logoContainer = document.getElementById("logo-container");
+        
+        if (logoContainer) {
+            const logoImg = document.createElement("img");
+            logoImg.src = "logo_plateforme.png"; 
+            logoImg.alt = "Logo La Plateforme";
+            logoImg.id = "plateforme-logo"; 
+
+            logoContainer.appendChild(logoImg);
+            console.log("Logo inséré sur la page.");
+        }
     }
 }

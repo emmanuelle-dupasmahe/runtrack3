@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>Bienvenue ! Faites le code...</h1>
+    <div id="logo-container"></div>
     <script src="./script.js"></script>
 </body>
 </html>

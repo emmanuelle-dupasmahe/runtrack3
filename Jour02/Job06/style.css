@@ -18,13 +18,12 @@ body {
 h1 {
     color: var(--plateforme-blue);
     font-size: 2.5em;
-    font-weight: 800; /* Très gras */
+    font-weight: 800; 
 }
 
 /* Style Appliqué après le Code Konami (la-plateforme-style) */
 
 body.la-plateforme-style {
-   
     background-color: var(--plateforme-blue); 
     color: var(--plateforme-white);
     padding: 0;
@@ -37,9 +36,7 @@ body.la-plateforme-style {
 }
 
 body.la-plateforme-style h1 {
-    
     color: var(--plateforme-white); 
-   
     font-size: 3em; 
     font-weight: 900; 
     line-height: 1.2;
@@ -50,4 +47,20 @@ body.la-plateforme-style h1 {
 body.la-plateforme-style a {
     color: var(--plateforme-white);
     text-decoration: underline;
+}
+/* pour insérer le logo*/
+
+#plateforme-logo {
+   
+    width: 250px; 
+    height: auto;
+    margin: 40px 0 20px 0; 
+}
+
+body.la-plateforme-style #logo-container {
+    
+    position: absolute; 
+    top: 20px;
+    left: 20px;
+   
 }
