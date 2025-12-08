@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Bienvenue ! Faites le code...</h1>
+    <h1 id="header-text">Bienvenue ! Faites le code...</h1>
     <div id="logo-container"></div>
     <script src="./script.js"></script>
 </body>

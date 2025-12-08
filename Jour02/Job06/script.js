@@ -43,7 +43,11 @@ function applyLaPlateformeStyle() {
     if (!document.body.classList.contains("la-plateforme-style")) {
         document.body.classList.add("la-plateforme-style");
         console.log("🎉 Code Konami validé ! Le style a été appliqué.");
-
+        
+        const header = document.getElementById("header-text");
+        if (header) {
+            header.textContent = "Bienvenue ! Vous avez réussi !";
+        }
         const logoContainer = document.getElementById("logo-container");
         
         if (logoContainer) {
