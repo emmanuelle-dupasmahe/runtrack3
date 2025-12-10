@@ -33,14 +33,15 @@
         <div class="draggable" data-number="6"><img src="arcenciel/arc6.png" alt="Morceau 6"></div>
     </div>
 
+    <div class="result" id="result"></div>
+
     <div class="controls">
         <button id="btnShuffle">Mélanger</button>
         <button id="btnVerifier">Vérifier</button>
         <button id="btnReset">Réinitialiser le Jeu</button>
     </div>
 
-    <div class="result" id="result"></div>
-
+   
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
     <script src="script.js"></script>

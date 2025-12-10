@@ -21,6 +21,7 @@ h2 {
     background: #FEF600;
     padding: 20px;
     border-radius: 15px;
+    border: 2px solid #2C009C; 
     margin-bottom: 10px;
     font-size: 16px;
     color:#2C009C;
@@ -31,7 +32,7 @@ h2 {
     justify-content: center; 
     align-items: center; 
 }
-
+/*les zones de reconstrction de l'arc en ciel*/
 .drop-zone { 
     width: 100px; 
     border: 1px dashed #2C009C; 
@@ -54,7 +55,7 @@ h2 {
     height: auto; 
     object-fit: contain; 
 }
-
+/*les morceaux d'arc en ciel à déplacer*/
 .drop-zone .draggable {
     width: 100%;
     height: auto;
@@ -63,25 +64,6 @@ h2 {
     left: 0;
 }
 
-
-.draggable { 
-    cursor: grab; 
-}
-.draggable img { 
-    width: 100px; 
-    height: auto; 
-    object-fit: contain; 
-    display: block; 
-}
-
-.result.success { 
-    color: green; 
-    font-weight: bold; 
-}
-.result.error { 
-    color: red; 
-    font-weight: bold; 
-}
 .game-container { 
     margin-bottom: 20px; 
 }
@@ -91,6 +73,51 @@ h2 {
     justify-content: center; 
     align-items: flex-end; 
 }
+.draggable { 
+    cursor: grab; 
+}
+.draggable img { 
+    width: 100px; 
+    height: auto; 
+    object-fit: contain; 
+    display: block; 
+}
+/* le résultat de la reconstruction*/
+.result {
+    
+    min-height: 40px; 
+    margin: 20px auto; 
+    padding: 15px 20px; 
+    border-radius: 10px;
+    font-size: 20px; 
+    text-align: center;
+    transition: all 0.5s ease; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); 
+}
+
+.result.success { 
+    color: #007000; 
+    background-color: #E6FFE6;
+    border: 2px solid #00BC00; 
+    font-weight: bold; 
+}
+.result.error { 
+    color: #B30000; 
+    background-color: #FFE6E6; 
+    border: 2px solid #FE622C; 
+    font-weight: bold; 
+}
+
+
+.result.success { 
+    color: green; 
+    font-weight: bold; 
+}
+.result.error { 
+    color: red; 
+    font-weight: bold; 
+}
+/*les boutons mélanger, vérifier et réinitialiser*/
 .controls {
     margin-top: 20px;
     display: flex;
