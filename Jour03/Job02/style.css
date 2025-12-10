@@ -1,172 +1,141 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 900px;
-            margin: 50px auto;
-            padding: 20px;
-            text-align: center;
-        }
+h1 {
+    color: #2C009C;
+    margin-bottom: 10px;
+}
 
-        h1 {
-            color: #333;
-            margin-bottom: 30px;
-        }
+h2 {
+    color: #2C009C;
+    margin-bottom: 10px;
+}
 
-        .instructions {
-            background: #f0f0f0;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            font-size: 16px;
-        }
+.instructions {
+    background: #FEF600;
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
 
-        .game-container {
-            display: flex;
-            justify-content: space-around;
-            margin: 40px 0;
-        }
+.drop-zones, #draggableContainer { 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
 
-        .drop-zones {
-            display: flex;
-            gap: 20px;
-        }
+.drop-zone { 
+    width: 100px; 
+    border: 1px dashed #2C009C; 
+    margin: 0; 
+    position: relative; 
+    overflow: hidden; 
+}
 
-        .drop-zone {
-            width: 120px;
-            height: 120px;
-            border: 3px dashed #999;
-            border-radius: 10px;
-            background: #f9f9f9;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            color: #666;
-            transition: all 0.3s;
-        }
+.drop-zone[data-number="1"],
+.drop-zone[data-number="2"],
+.drop-zone[data-number="3"],
+.drop-zone[data-number="4"],
+.drop-zone[data-number="5"],
+.drop-zone[data-number="6"] {
+    height: 270px; 
+}
 
-        .drop-zone.ui-droppable-hover {
-            background: #e8f5e9;
-            border-color: #4caf50;
-            transform: scale(1.05);
-        }
+.drop-zone img { 
+    width: 100%; 
+    height: auto; 
+    object-fit: contain; 
+}
 
-        .drop-zone .label {
-            font-weight: bold;
-            font-size: 12px;
-            margin-bottom: 5px;
-            color: #333;
-        }
+.drop-zone .draggable {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
 
-        .drop-zone .number {
-            font-size: 36px;
-            font-weight: bold;
-            color: #2196f3;
-        }
 
-        .draggable-items {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+.draggable { 
+    cursor: grab; 
+}
+.draggable img { 
+    width: 100px; 
+    height: auto; 
+    object-fit: contain; 
+    display: block; 
+}
 
-        .draggable {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, #ff9a56 0%, #ff6a00 100%);
-            color: white;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 48px;
-            font-weight: bold;
-            cursor: move;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
-        }
+.result.success { 
+    color: green; 
+    font-weight: bold; 
+}
+.result.error { 
+    color: red; 
+    font-weight: bold; 
+}
+.game-container { 
+    margin-bottom: 20px; 
+}
 
-        .draggable:hover {
-            transform: scale(1.1);
-        }
+.drop-zones, #draggableContainer { 
+    display: flex; 
+    justify-content: center; 
+    align-items: flex-end; 
+}
+.controls {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px; 
+    justify-content: center;
+}
 
-        .draggable.ui-draggable-dragging {
-            opacity: 0.7;
-            transform: rotate(5deg);
-        }
 
-        .controls {
-            margin-top: 40px;
-        }
+.controls button {
+    background-color: #009CFE; 
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-        #btnVerifier {
-            background: #4caf50;
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            font-size: 18px;
-            border-radius: 8px;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-        }
 
-        #btnVerifier:hover {
-            background: #45a049;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
-        }
+.controls button:hover {
+    background-color: #0056b3; 
+    transform: translateY(-1px); 
+}
 
-        #btnReset {
-            background: #2196f3;
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            font-size: 18px;
-            border-radius: 8px;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-            margin-left: 10px;
-        }
 
-        #btnReset:hover {
-            background: #1976d2;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
-        }
+.controls button:active {
+    background-color: #004085; 
+    transform: translateY(0); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-        .result {
-            margin-top: 30px;
-            font-size: 24px;
-            font-weight: bold;
-            min-height: 40px;
-        }
 
-        .result.success {
-            color: #4caf50;
-            animation: bounce 0.5s;
-        }
+#btnVerifier {
+    background-color: #00BC00; 
+}
 
-        .result.error {
-            color: #f44336;
-            animation: shake 0.5s;
-        }
+#btnVerifier:hover {
+    background-color: #1e7e34;
+}
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
 
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-10px); }
-            75% { transform: translateX(10px); }
-        }
+#btnReset {
+    background-color: #FE622C; 
+}
 
-        .drop-zone.filled {
-            border-color: #4caf50;
-            background: #e8f5e9;
-        }
+#btnReset:hover {
+    background-color: #DE0000;
+}
