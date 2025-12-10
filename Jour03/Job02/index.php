@@ -7,7 +7,6 @@
 </head>
 <body>
     <h1>🌈 Jeu de l'arc-en-ciel</h1>
-
     <div class="instructions">
         <strong>Instructions :</strong> Mélangez les morceaux, puis glissez-les dans les cases au dessus pour reconstruire le bel arc-en-ciel.
     </div>

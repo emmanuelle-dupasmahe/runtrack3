@@ -1,13 +1,14 @@
 body {
     font-family: Arial, sans-serif;
     max-width: 900px;
-    margin: 20px auto;
-    padding: 20px;
+    margin: 0 auto;
+    padding: 0;
     text-align: center;
 }
 
 h1 {
     color: #2C009C;
+    margin-top: 0;
     margin-bottom: 10px;
 }
 
@@ -18,10 +19,11 @@ h2 {
 
 .instructions {
     background: #FEF600;
-    padding: 15px;
+    padding: 20px;
     border-radius: 15px;
     margin-bottom: 10px;
     font-size: 16px;
+    color:#2C009C;
 }
 
 .drop-zones, #draggableContainer { 
@@ -44,7 +46,7 @@ h2 {
 .drop-zone[data-number="4"],
 .drop-zone[data-number="5"],
 .drop-zone[data-number="6"] {
-    height: 270px; 
+    height: 260px; 
 }
 
 .drop-zone img { 

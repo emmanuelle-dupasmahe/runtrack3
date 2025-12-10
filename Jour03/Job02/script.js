@@ -76,7 +76,7 @@ $(function () {
                 });
             }
 
-            // Placer le nouvel élément dans la zone
+            // Place le nouvel élément dans la zone
             dropZone.append(draggable);
             draggable.css({
                 position: 'relative',
@@ -84,10 +84,10 @@ $(function () {
                 top: '0'
             });
 
-            // Marquer la zone comme remplie
+            // Marque la zone comme remplie
             dropZone.addClass('filled');
 
-            // Réinitialiser le résultat
+            // Réinitialise le résultat
             $('#result').text('').removeClass('success error');
         },
 
@@ -97,7 +97,7 @@ $(function () {
         }
     });
 
-    // Configurer le container des draggables comme droppable aussi (pour récupérer les morceaux)
+    // Configure le container des draggables comme droppable aussi (pour récupérer les morceaux)
     $('#draggableContainer').droppable({
         accept: '.draggable',
         tolerance: 'intersect',
@@ -110,7 +110,7 @@ $(function () {
                 parentZone.removeClass('filled');
             }
 
-            // Replacer dans le container source
+            // Replace dans le container source
             $(this).append(draggable);
             draggable.css({
                 position: 'relative',
@@ -118,17 +118,17 @@ $(function () {
                 top: '0'
             });
 
-            // Réinitialiser le résultat
+            // Réinitialise le résultat
             $('#result').text('').removeClass('success error');
         }
     });
 
-    // Vérifier la solution
+    // Vérifie la solution
     $('#btnVerifier').on('click', function() {
         let isCorrect = true;
         let filledCount = 0;
 
-        // Vérifier chaque zone
+        // Vérifie chaque zone
         $('.drop-zone').each(function() {
             const dropZone = $(this);
             const expectedNumber = parseInt(dropZone.data('number'));
@@ -146,7 +146,7 @@ $(function () {
 
         const resultDiv = $('#result');
 
-        // Vérifier si toutes les cases sont remplies (doit être 6)
+        // Vérifie si toutes les cases sont remplies (doit être 6)
         if (filledCount !== TOTAL_PIECES) {
             resultDiv
                 .text('⚠️ Toutes les ' + TOTAL_PIECES + ' cases doivent être remplies !')
@@ -155,7 +155,7 @@ $(function () {
             return;
         }
 
-        // Afficher le résultat final
+        // Affiche le résultat final
         if (isCorrect) {
             resultDiv
                 .text('🎉 Vous avez gagné ! L\'arc-en-ciel est reconstitué !')
@@ -169,17 +169,17 @@ $(function () {
         }
     });
 
-    // Bouton Mélanger : appelle simplement la fonction shuffle
+    // Bouton Mélanger 
     $('#btnShuffle').on('click', function() {
         shuffleDraggables();
     });
     
-    // Bouton Réinitialiser : appelle la fonction d'initialisation complète
+    // Bouton Réinitialiser 
     $('#btnReset').on('click', function() {
         initGame();
     });
 
-    // Initialiser le jeu au chargement
+    
     initGame();
 
 });
