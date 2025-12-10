@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
-    <button id="button">Clique-moi</button>
     <script src="script.js"></script>
 </body>
 </html>

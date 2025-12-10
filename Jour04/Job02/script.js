@@ -1,7 +1,6 @@
 
 function jsonValueKey(stringJson, key) {
     try {
-        
         const obj = JSON.parse(stringJson);
         return obj[key];
 

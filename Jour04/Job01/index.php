@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>api fetch</title>
+    <title>bouton qui affiche une citation</title>
     <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
