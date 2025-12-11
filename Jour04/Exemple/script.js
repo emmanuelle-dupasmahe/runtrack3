@@ -1,7 +1,7 @@
 async function afficherUsers() {
   const reponse = await fetch("./users.json");
-  const films = await reponse.json();
-  console.log(films);
+  const users = await reponse.json();
+  console.log(users);
 }
 
 afficherUsers();

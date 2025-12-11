@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Un formulaire qui récupère les données d'un fichier Pokemon.json</title>
+    <title>Un formulaire qui filtre les données d'un fichier Pokemon.json</title>
     <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
