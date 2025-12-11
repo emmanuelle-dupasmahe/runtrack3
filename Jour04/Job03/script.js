@@ -1,6 +1,6 @@
 let allPokemon = [];
-const TYPE_SELECT_ID = 'type-filter';
-const RESULTS_CONTAINER_ID = 'results-container';
+const Type_select_ID = 'type-filter';
+const Result_container_ID = 'results-container';
 
 async function loadPokemonData() {
     try {
@@ -11,7 +11,7 @@ async function loadPokemonData() {
             throw new Error(`Erreur HTTP: ${response.status}`);
         }
         
-        allPokemon = await response.json();
+        allPokemon = await response.json(); //parsing
         
         
         populateTypeDropdown(allPokemon);
@@ -19,14 +19,14 @@ async function loadPokemonData() {
         console.log("Données Pokémon chargées avec succès.");
     } catch (error) {
         console.error("Erreur lors du chargement des données Pokémon:", error);
-        document.getElementById(RESULTS_CONTAINER_ID).innerHTML = 
+        document.getElementById(Result_container_ID).innerHTML = 
             '<p style="color: red;">Erreur: Impossible de charger le fichier pokemon.json.</p>';
     }
 }
 
 
 function populateTypeDropdown(pokemonList) {
-    const typeSelect = document.getElementById(TYPE_SELECT_ID);
+    const typeSelect = document.getElementById(Type_select_ID);
     const allTypes = new Set(); 
 
     
@@ -49,7 +49,7 @@ function populateTypeDropdown(pokemonList) {
 }
 
 function displayResults(filteredPokemon) {
-    const container = document.getElementById(RESULTS_CONTAINER_ID);
+    const container = document.getElementById(Result_container_ID);
     container.innerHTML = ''; 
 
     if (filteredPokemon.length === 0) {
@@ -83,7 +83,7 @@ function filterPokemon() {
     }
     const idFilter = document.getElementById('id-filter').value.trim();
     const nameFilter = document.getElementById('name-filter').value.trim().toLowerCase();
-    const typeFilter = document.getElementById(TYPE_SELECT_ID).value;
+    const typeFilter = document.getElementById(Type_select_ID).value;
 
 // Détermine si au moins un des critères ID ou Nom est utilisé
     const isIdOrNameFilteringActive = idFilter || nameFilter;
