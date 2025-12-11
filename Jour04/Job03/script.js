@@ -90,7 +90,8 @@ function filterPokemon() {
 
 //  le filtrage
     const filteredList = allPokemon.filter(pokemon => {
-            // on filtre soit par id soit par nom
+            
+        // on filtre soit par id soit par nom en français
             let idOrNameMatch = false;
 
             if (!isIdOrNameFilteringActive) {
@@ -110,7 +111,7 @@ function filterPokemon() {
              }
         }
 
-        // Si le Pokémon ne correspond pas aux critères ID/Nom, on l'exclut.
+        // Si le Pokémon ne correspond pas aux critères ID/Nom,  il est exclut.
         if (!idOrNameMatch) {
         return false;
         }
