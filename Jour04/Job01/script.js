@@ -7,7 +7,7 @@ button.addEventListener('click', function() {
             if (!response.ok) {
                 throw new Error(`Erreur HTTP: ${response.status}`);
             }
-            return response.text();
+            return response.text(); //parsing
         })
         .then(data => {
             const newParagraph = document.createElement('p');

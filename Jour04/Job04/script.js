@@ -2,13 +2,13 @@ function updateUsersTable() {
     const tableBody = document.querySelector('#users-table tbody');
     tableBody.innerHTML = ''; 
     fetch('users.php')
-    //une promise (Pending (En attente)Fulfilled (Résolue avec succès)Rejected (Rejetée avec erreur))
+    //une promise (Pending (En attente) Fulfilled (Résolue avec succès) Rejected (Rejetée avec erreur))
         .then(response => {
             
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            return response.json();
+            return response.json(); //parsing
         })
         .then(users => {
             if (users.length === 0) {

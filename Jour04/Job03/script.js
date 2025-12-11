@@ -90,7 +90,7 @@ function filterPokemon() {
 
 //  le filtrage
     const filteredList = allPokemon.filter(pokemon => {
-            
+         
         // on filtre soit par id soit par nom en français
             let idOrNameMatch = false;
 
