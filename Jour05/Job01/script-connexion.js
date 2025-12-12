@@ -16,7 +16,7 @@ const clearError = (elementId) => {
     }
 };
 
-// Validation Email 
+// Email 
 const validateEmailConnexion = (inputElement) => {
     const value = inputElement.value.trim();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
@@ -33,7 +33,7 @@ const validateEmailConnexion = (inputElement) => {
     return true;
 };
 
-// Validation Mot de passe 
+// Mot de passe 
 const validatePasswordConnexion = (passwordElement) => {
     const value = passwordElement.value;
     

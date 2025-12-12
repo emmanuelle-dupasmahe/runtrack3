@@ -62,7 +62,7 @@ const validatePassword = (passwordElement) => {
     //regex mot de passe qui doit contenir au moins 1 majuscule
     //au moins 1 minuscule
     //au moins 1 chiffre 
-    //pas moins de 12 caractères recommandations de l'ANSSI
+    //pas moins de 12 caractères recommandation de l'ANSSI
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{12,}$/
 
     if (value === "") {
@@ -116,7 +116,7 @@ const validateAdresse = (inputElement) => {
 // Validation du code postal
 const validateCodePostal = (inputElement) => {
     const value = inputElement.value.trim();
-    // Regex stricte : Doit être exactement 5 chiffres
+    // Regex code postal doit être exactement 5 chiffres
     const cpRegex = /^[0-9]{5}$/; 
 
     if (value === "") {
@@ -187,6 +187,8 @@ form.addEventListener('submit', (event) => {
     }
     
 });
+
+//pour afficher ou cacher le mot de passe
 const setupPasswordToggle = (inputId, buttonId) => {
     const passwordInput = document.getElementById(inputId);
     const toggleButton = document.getElementById(buttonId);
