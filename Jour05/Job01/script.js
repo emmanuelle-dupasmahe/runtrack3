@@ -2,7 +2,7 @@
 const displayError = (elementId, message) => {
     const errorElement = document.getElementById(`error-${elementId}`);
     if (errorElement) {
-        // Ajoute la classe 'is-invalid' de Bootstrap pour styliser l'input en rouge
+        //classe 'is-invalid' de Bootstrap qui va envoyer des messages en rouge
         document.getElementById(elementId).classList.add('is-invalid');
         errorElement.textContent = message;
     }
@@ -19,11 +19,12 @@ const clearError = (elementId) => {
 
 
 
-// Nom / Prénom
+// Nom et Prénom
 const validateName = (inputElement) => {
     const value = inputElement.value.trim();
-    // Regex : Accepte uniquement les lettres (majuscules/minuscules), les tirets, et les espaces, minimum 2 caractères.
-    const nameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ\s-]{2,}$/; 
+    // Regex : accepte les lettres (majuscules/minuscules), les tirets et les espaces, minimum 2 caractères et maximum 50 caractères.
+    const nameRegex = /^[a-zA-ZÀ-ÿ\s-]{2,50}$/; 
+
 
     if (value === "") {
         displayError(inputElement.id, 'Ce champ est obligatoire.');
@@ -41,7 +42,7 @@ const validateName = (inputElement) => {
 const validateEmail = (inputElement) => {
     const value = inputElement.value.trim();
     // Regex standard pour une validation d'email de base
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+    const emailRegex = /^[\w.-]+@[\w.-]+\.[a-z]{2,}$/i; 
 
     if (value === "") {
         displayError(inputElement.id, 'L\'adresse email est obligatoire.');
@@ -58,22 +59,18 @@ const validateEmail = (inputElement) => {
 // Mot de passe 
 const validatePassword = (passwordElement) => {
     const value = passwordElement.value;
-    // Regex stricte : 
-    // ^                   Début de la chaîne
-    // (?=.*[a-z])         Doit contenir au moins une minuscule
-    // (?=.*[A-Z])         Doit contenir au moins une majuscule
-    // (?=.*\d)            Doit contenir au moins un chiffre
-    // (?=.*[!@#$%^&*])    Doit contenir au moins un caractère spécial (ajustez selon vos besoins)
-    // [A-Za-z\d!@#$%^&*]{8,} Doit contenir au moins 8 caractères au total
-    // $                   Fin de la chaîne
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+    //regex mot de passe qui doit contenir au moins 1 majuscule
+    //au moins 1 minuscule
+    //au moins 1 chiffre 
+    //pas moins de 12 caractères recommandations de l'ANSSI
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{12,}$/
 
     if (value === "") {
         displayError(passwordElement.id, 'Le mot de passe est obligatoire.');
         return false;
     }
     if (!passwordRegex.test(value)) {
-        displayError(passwordElement.id, 'Le mot de passe doit contenir : 8 caractères min., 1 Majuscule, 1 minuscule, 1 chiffre, et 1 caractère spécial.');
+        displayError(passwordElement.id, 'Le mot de passe doit contenir : 12 caractères minimum (ANSSI), 1 Majuscule, 1 minuscule, 1 chiffre et 1 caractère spécial.');
         return false;
     }
     clearError(passwordElement.id);
@@ -100,8 +97,9 @@ const validatePasswordCompare = (passwordCompareElement) => {
 // Validation de l'adresse
 const validateAdresse = (inputElement) => {
     const value = inputElement.value.trim();
-    // Regex simple : lettres, chiffres, espaces, virgules, et tirets. Minimum 5 caractères.
+    // Regex pour adresse : lettres, chiffres, espaces, virgules et tirets. Minimum 5 caractères.
     const adresseRegex = /^[A-Za-z0-9\s, -]{5,}$/; 
+
 
     if (value === "") {
         displayError(inputElement.id, 'L\'adresse est obligatoire.');
@@ -119,7 +117,7 @@ const validateAdresse = (inputElement) => {
 const validateCodePostal = (inputElement) => {
     const value = inputElement.value.trim();
     // Regex stricte : Doit être exactement 5 chiffres
-    const cpRegex = /^\d{5}$/; 
+    const cpRegex = /^[0-9]{5}$/; 
 
     if (value === "") {
         displayError(inputElement.id, 'Le code postal est obligatoire.');
@@ -142,6 +140,7 @@ const password = document.getElementById('password');
 const passwordCompare = document.getElementById('passwordCompare');
 const adresse = document.getElementById('adresse');
 const codepostal = document.getElementById('codepostal');
+
 
 // Fonction d'écoute générique pour l'événement 'blur' permet d'éviter de répéter
 // addEventListener pour nom, prenom etc. on ne le fait qu'une seule fois...
@@ -186,4 +185,38 @@ form.addEventListener('submit', (event) => {
     } else {
         alert('Veuillez corriger les erreurs indiquées dans le formulaire avant de soumettre.');
     }
+    
 });
+const setupPasswordToggle = (inputId, buttonId) => {
+    const passwordInput = document.getElementById(inputId);
+    const toggleButton = document.getElementById(buttonId);
+
+    if (toggleButton && passwordInput) {
+        toggleButton.addEventListener('click', () => {
+            // Déterminer le nouveau type
+            const isPassword = passwordInput.getAttribute('type') === 'password';
+            const newType = isPassword ? 'text' : 'password';
+
+            // Changer l'attribut
+            passwordInput.setAttribute('type', newType);
+
+            // Changer l'icône du bouton pour refléter l'état
+            if (isPassword) {
+                // Le mot de passe est maintenant visible
+                toggleButton.innerHTML = '🙈'; 
+                toggleButton.setAttribute('title', 'Masquer le mot de passe');
+            } else {
+                // Le mot de passe est maintenant masqué
+                toggleButton.innerHTML = '👁️'; 
+                toggleButton.setAttribute('title', 'Afficher le mot de passe');
+            }
+        });
+    }
+};
+
+// Application de la fonction pour les deux champs :
+// 1. Champ 'Mot de passe'
+setupPasswordToggle('password', 'togglePassword'); 
+
+// 2. Champ 'Confirmation Mot de passe'
+setupPasswordToggle('passwordCompare', 'togglePasswordCompare');

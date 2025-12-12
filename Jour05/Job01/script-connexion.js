@@ -54,6 +54,25 @@ const formConnexion = document.getElementById('form-connexion');
 const emailConnexion = document.getElementById('email-connexion');
 const passwordConnexion = document.getElementById('password-connexion');
 
+const passwordInput = document.getElementById('password-connexion');
+const toggleButton = document.getElementById('togglePasswordConnexion');
+
+if (toggleButton) {
+    toggleButton.addEventListener('click', () => {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        
+        // Changer l'attribut du champ
+        passwordInput.setAttribute('type', type);
+        
+        
+        if (type === 'text') {
+            toggleButton.innerHTML = '🙈';
+        } else {
+            toggleButton.innerHTML = '👁️'; 
+        }
+    });
+}
+
 // Validation asynchrone lors de la perte de focus (blur)
 emailConnexion.addEventListener('blur', () => validateEmailConnexion(emailConnexion));
 passwordConnexion.addEventListener('blur', () => validatePasswordConnexion(passwordConnexion));

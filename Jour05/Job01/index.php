@@ -10,7 +10,7 @@
     <header>
         <h1> Jour 05 </h1>
     <nav class="navigation">
-        <a href="index.php">Accueil</a>
+        <a href="index.php">🏠</a>
         <a href="connexion.html" >Connexion</a> 
         <a href="inscription.html">Inscription</a>
     </nav>
