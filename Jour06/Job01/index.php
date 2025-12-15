@@ -5,14 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Plateforme</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    
     <style>
-        /* Styles pour imiter l'apparence des images */
+        .container.mt-4 {
+            background-color: #c4c5c7ff;
+            border:1px solid #212529;
+            padding-top: 1px;
+            padding-bottom: 20px;
+            position: relative;
+        } 
+        .container.mt-4 .nav{
+            background-color: #c4c5c7ff; 
+            margin-top: -1px;
+            justify-content: start;
+            position: absolute; 
+            top: -1px;      
+            left: 0;         
+            right: 0;        
+            width: 100%;     
+            justify-content: start;
+            z-index: 10;
+        }
         .header-section {
-            background-color: #f8f9fa; /* Gris clair comme sur l'image */
+            background-color: #c4c5c7ff;
             padding: 20px 0;
             margin-bottom: 20px;
-            border-radius: .3rem; /* Légers coins arrondis */
+            border-radius: .3rem;
+            margin-top: 50px;
         }
         .sidebar-menu a {
             border-bottom: 1px solid #dee2e6;
@@ -43,12 +61,56 @@
             font-size: 0.9rem;
         }
         .install-progress-bar .progress-bar {
-             background-color: #dc3545; 
+             background-color: #f2d114ff; 
         }
         .install-title {
             color: #495057; 
             font-weight: bold;
         }
+        .link-block {
+            background-color: white;
+            padding: 20px;
+            margin-top: 40px;
+            position: relative; 
+            border-radius: .3rem;
+            border: 1px solid #e9ecef;
+        }
+        .post-button {
+            position: absolute;
+            top: -20px; 
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 5px 20px;
+            border-radius: .25rem;
+            font-weight: bold;
+        }
+        .link-table td:first-child {
+            text-align: right;
+            padding-right: 15px;
+            font-weight: 500;
+        }
+        .link-input {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ced4da;
+            background-color: #f8f9fa; 
+        }
+        .confidentiality-btn {
+            position: fixed; 
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: inline-flex;
+            align-items: center;
+        }
+        .grey-progress-container {
+        max-width: 650px; 
+        margin: 0 auto; 
+        padding: 0 15px; 
+    }
     </style>
 </head>
 <body>
@@ -59,34 +121,20 @@
         <button class="btn btn-primary">Héberger des Images</button>
     </header>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <div class="container-fluid">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Voir plus</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">BBCode</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Meilleurs appareils photo</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    
-    <div class="container mt-4">
 
-        <div class="header-section text-center">
-            <h1 class="mb-3">LaPlateforme_</h1>
-            <nav class="nav justify-content-center border-top border-bottom">
-                <a class="nav-link text-dark" href="#">LPTF</a>
-                <a class="nav-link text-dark" href="#">Accueil</a>
-                <a class="nav-link text-dark" href="#">Units</a>
-                <a class="nav-link text-dark" href="#">Jobs</a>
-                <a class="nav-link text-dark" href="#">Skills</a>
-            </nav>
-        </div>
+    <div class="container mt-4">
+        <nav class="nav nav border-top border-bottom bg-light w-100">
+            <a class="nav-link text-dark" href="#">LPTF</a>
+            <a class="nav-link text-dark" href="#">Accueil</a>
+            <a class="nav-link text-dark" href="#">Units</a>
+            <a class="nav-link text-dark" href="#">Jobs</a>
+            <a class="nav-link text-dark" href="#">Skills</a>
+        </nav>
+    <div class="header-section">
+        <h1 class="mb-3 text-center">LaPlateforme_</h1> 
+    </div>
+    
+
 
         <div class="row">
             
@@ -101,11 +149,11 @@
                     </div>
                 </div>
 
-                <div class="mb-4 overflow-hidden">
-                    <h2>Bonjour, monde!</h2>
+                <div class="mb-4 overflow-hidden article-block bg-light p-4 shadow-sm">
+                    <h2>Bonjour, monde !</h2>
                     <p class="fst-italic">Il existe plusieurs visions du terme :</p>
                     <p>le monde est la matière, l'espace et les phénomènes qui nous sont accessibles par les sens, l'expérience ou la raison.</p>
-                    <p>Le sens le plus courant désigne notre planète, la Terre, avec ses habitants, et son environnement plus ou moins naturel.</p>
+                    <p>Le sens le plus courant désigne notre planète, la Terre, avec ses habitants et son environnement plus ou moins naturel.</p>
                     <p>Le sens étendu désigne l'univers dans son ensemble.</p>
                     
                     <button class="btn btn-danger me-3">Rebooter le Monde</button>
@@ -127,7 +175,7 @@
                     <a href="#" class="list-group-item list-group-item-action active-link border-0 rounded-top">Limbes</a>
                     <a href="#" class="list-group-item list-group-item-action border-0">Luxure</a>
                     <a href="#" class="list-group-item list-group-item-action border-0">Gourmandise</a>
-                    <a href="#" class="list-group-item list-group-item-action border-0">Avance</a>
+                    <a href="#" class="list-group-item list-group-item-action border-0">Avarice</a>
                     <a href="#" class="list-group-item list-group-item-action border-0">Colere</a>
                     <a href="#" class="list-group-item list-group-item-action border-0">Heresie</a>
                     <a href="#" class="list-group-item list-group-item-action border-0">Violence</a>
@@ -138,12 +186,12 @@
             </div>
         </div>
         
-        <h3 class="mt-5 mb-3">Recevez votre copie gratuite d'Internet 2!</h3>
+        <h3 class="mt-5 mb-3">Recevez votre copie gratuite d'Internet 2 !</h3>
         
         <div class="install-progress-bar">
             <span class="install-title">+I</span>
             <div class="progress flex-grow-1 mx-2" style="height: 10px;">
-                <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 75%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
             <span class="install-title">Installation de AI 9000</span>
         </div>
@@ -189,8 +237,54 @@
                 <button type="submit" class="btn btn-primary mt-3">Submit</button>
             </div>
         </form>
+</div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="link-block shadow-sm">
+                    <div class="post-button">
+                        <i class="fas fa-times me-1"></i> Post
+                    </div>
+                    
+                    <hr class="mt-4 mb-4">
 
-    </div> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+                    <table class="link-table w-100">
+                        <tr>
+                            <td>Lien vers l'image :</td>
+                            <td><input type="text" class="link-input" value="https://zupimages.net/viewe..."></td>
+                        </tr>
+                        <tr>
+                            <td>Lien direct :</td>
+                            <td><input type="text" class="link-input" value="https://zupimages.net/up/2C..."></td>
+                        </tr>
+                        <tr>
+                            <td>BBCode (forum) :</td>
+                            <td><input type="text" class="link-input" value="[url=https://zupimages.net/v..."></td>
+                        </tr>
+                        <tr>
+                            <td>HTML (site) :</td>
+                            <td><input type="text" class="link-input" value="<a href='https://zupimages..."></td>
+                        </tr>
+                    </table>
+
+                    <hr class="mt-4">
+                </div>
+            </div>
+                    </div>
+
+    <div class="grey-progress-container mt-4 mb-5">
+            <div class="progress mb-2" style="height: 8px;"> 
+                <div class="progress-bar bg-secondary progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <div class="progress" style="height: 8px;">
+                <div class="progress-bar bg-secondary progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div>
+
+    <button class="btn btn-primary confidentiality-btn">
+        <i class="fas fa-star me-2"></i> ⚙️ Confidentialité
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 </body>
 </html>
