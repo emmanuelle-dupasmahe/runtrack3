@@ -67,28 +67,32 @@
             <div class="col-lg-4">
                 <div class="list-group sidebar-menu shadow-sm">
                     <a href="#" class="list-group-item list-group-item-action active-link border-0 rounded-top">Limbes</a>
-                    <a href="#" class="list-group-item list-group-item-action active-link border-0">Luxure</a>
-                    <a href="#" class="list-group-item list-group-item-action active-link border-0">Gourmandise</a>
-                    <a href="#" class="list-group-item list-group-item-action active-link border-0">Avarice</a>
-                    <a href="#" class="list-group-item list-group-item-action active-link border-0">Colere</a>
-                    <a href="#" class="list-group-item list-group-item-action active-link border-0">Heresie</a>
-                    <a href="#" class="list-group-item list-group-item-action active-link border-0">Violence</a>
-                    <a href="#" class="list-group-item list-group-item-action active-link border-0">Ruse et Tromperie</a>
-                    <a href="#" class="list-group-item list-group-item-action active-link border-0">Trahison</a>
-                    <a href="#" class="list-group-item list-group-item-action active-link border-0 rounded-bottom">Internet Explorer</a>
+                    <a href="#" class="list-group-item list-group-item-action  border-0">Luxure</a>
+                    <a href="#" class="list-group-item list-group-item-action  border-0">Gourmandise</a>
+                    <a href="#" class="list-group-item list-group-item-action  border-0">Avarice</a>
+                    <a href="#" class="list-group-item list-group-item-action  border-0">Colere</a>
+                    <a href="#" class="list-group-item list-group-item-action  border-0">Heresie</a>
+                    <a href="#" class="list-group-item list-group-item-action  border-0">Violence</a>
+                    <a href="#" class="list-group-item list-group-item-action  border-0">Ruse et Tromperie</a>
+                    <a href="#" class="list-group-item list-group-item-action  border-0">Trahison</a>
+                    <a href="#" class="list-group-item list-group-item-action  border-0 rounded-bottom">Internet Explorer</a>
                 </div>
             </div>
         </div>
         
         <h3 class="mt-5 mb-3">Recevez votre copie gratuite d'Internet 2 !</h3>
         
-        <div class="install-progress-bar">
+       <div class="install-progress-bar" id="progress-click-area">
             <span class="install-title">+I</span>
             <div class="progress flex-grow-1 mx-2" style="height: 10px;">
-                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 75%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" 
+                    id="progressBar" 
+                    style="width: 50%;" 
+                    aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                </div>
             </div>
-            <span class="install-title">Installation de AI 9000</span>
-        </div>
+        <span class="install-title">Installation de AI 9000</span>
+    </div>
 
         <form class="row g-3">
             <div class="col-md-6">
@@ -269,6 +273,54 @@
             ${getPaginationHTML(pageIndex)} 
         `;
     }
+    document.addEventListener('DOMContentLoaded', (event) => {
+    const clickArea = document.getElementById('progress-click-area');
+    const progressBar = document.getElementById('progressBar');
+    const step = 10; // Définir la taille du pas (ex: 10% par clic)
+
+    if (clickArea && progressBar) {
+        clickArea.addEventListener('click', function(e) {
+            // Calculer la position X du clic par rapport à l'élément
+            const rect = clickArea.getBoundingClientRect();
+            const clickX = e.clientX - rect.left; 
+            
+            // Calculer le centre horizontal de l'élément
+            const center = rect.width / 2;
+            
+            // Récupérer la valeur actuelle
+            let currentValue = parseInt(progressBar.getAttribute('aria-valuenow'));
+
+            let newValue;
+
+            if (clickX < center) {
+                // Clic à GAUCHE : Décrémenter (régresser)
+                newValue = currentValue - step;
+            } else {
+                // Clic à DROITE : Incrémenter (progresser)
+                newValue = currentValue + step;
+            }
+
+            // Assurer que la valeur reste entre 0 et 100
+            newValue = Math.max(0, Math.min(100, newValue));
+            
+            // Mettre à jour l'affichage et les attributs
+            progressBar.style.width = newValue + '%';
+            progressBar.setAttribute('aria-valuenow', newValue);
+            
+            // Mettre à jour le titre dynamique (optionnel)
+            const titleSpan = clickArea.querySelector('span:last-child');
+            if (titleSpan) {
+                 if (newValue === 100) {
+                     titleSpan.textContent = "Installation Terminé !";
+                 } else if (newValue === 0) {
+                     titleSpan.textContent = "Installation Annulée";
+                 } else {
+                     titleSpan.textContent = "Installation de AI 9000";
+                 }
+            }
+        });
+    }
+});
 
 
 </script>
