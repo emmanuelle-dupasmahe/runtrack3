@@ -6,7 +6,7 @@
     <title>Page d'Accueil et Formulaire - Materialize</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
 
@@ -30,7 +30,7 @@
         <form action="#" method="post" class="col s12">
             
             <fieldset class="row">
-                <legend>Civilité</legend>
+                <legend><i class="material-icons left">person</i>Civilité</legend>
                 <p class="col s4">
                     <label>
                         <input type="radio" name="civility" value="Mme" required>
@@ -53,64 +53,77 @@
 
             <div class="row">
                 <div class="input-field col s6">
+                    
                     <input type="text" id="firstName" name="firstName" required class="validate">
-                    <label for="firstName">Prénom</label>
+                    
+                    <label for="firstName"><span><i class="material-icons left">tag_faces</i>Prénom</span></label>
                 </div>
                 <div class="input-field col s6">
+                    
                     <input type="text" id="lastName" name="lastName" required class="validate">
-                    <label for="lastName">Nom</label>
+            
+                    <label for="lastName"><span><i class="material-icons left">tag_faces</i>Nom</span></label>
                 </div>
             </div>
             
             <div class="row">
                 <div class="input-field col s12">
+                    
                     <input type="text" id="address" name="address" required class="validate">
-                    <label for="address">Adresse</label>
+    
+                    <label for="address"><span><i class="material-icons left">pets</i>Adresse</span></label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s12">
+                    
                     <input type="email" id="email" name="email" required class="validate">
-                    <label for="email">Adresse Email</label>
+                    
+                    <label for="email"><span><i class="material-icons left">email</i>Email</span></label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s6">
+                    
                     <input type="password" id="password" name="password" required class="validate">
-                    <label for="password">Mot de passe</label>
+                    
+                    <label for="password"><span><i class="material-icons left">lock_open</i>Mot de passe</span></label>
                 </div>
                 <div class="input-field col s6">
                     <input type="password" id="confirmPassword" name="confirmPassword" required class="validate">
-                    <label for="confirmPassword">Confirmer le mot de passe</label>
+                   
+                    <label for="confirmPassword"><span><i class="material-icons left">lock_open</i>Confirmer le mot de passe</span></label>
                 </div>
             </div>
 
             <fieldset class="row">
-                <legend>Vos passions</legend>
+                
+                <legend><i class="material-icons left">favorite_border</i>Vos passions</legend>
+                
                 <p class="col s3">
                     <label>
                         <input type="checkbox" name="passions" value="informatique">
-                        <span>Informatique</span>
+                        <span><i class="material-icons left">computer</i>Informatique</span>
                     </label>
                 </p>
                 <p class="col s3">
                     <label>
                         <input type="checkbox" name="passions" value="voyages">
-                        <span>Voyages</span>
+                        <span><i class="material-icons left">flight_takeoff</i>Voyages</span>
                     </label>
                 </p>
                 <p class="col s3">
                     <label>
                         <input type="checkbox" name="passions" value="sport">
-                        <span>Sport</span>
+                        <span><i class="material-icons left">directions_bike</i>Sport</span>
                     </label>
                 </p>
                 <p class="col s3">
                     <label>
                         <input type="checkbox" name="passions" value="lecture">
-                        <span>Lecture</span>
+                        <span><i class="material-icons left">book</i>Lecture</span>
                     </label>
                 </p>
             </fieldset>
@@ -119,6 +132,7 @@
             <div class="row center-align">
                 <button class="btn waves-effect waves-light" type="submit" name="action">
                     Créer mon compte
+                    <i class="material-icons right">send</i>
                 </button>
             </div>
 
