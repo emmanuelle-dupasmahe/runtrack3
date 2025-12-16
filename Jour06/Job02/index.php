@@ -199,6 +199,22 @@
 </div>
 </div>
 </div>
+<div class="modal fade" id="recapModal" tabindex="-1" aria-labelledby="recapModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="recapModalLabel">Récapitulatif de la Séquence Secrète (DGC)</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="recapContent"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
 <!--ajout d'un script pour des citations du film Blade Runner-->
     <script>
     const citationsBladeRunner = [
@@ -321,7 +337,68 @@
         });
     }
 });
+document.addEventListener('DOMContentLoaded', (event) => {
+    // Séquence de touches à détecter (D, G, C)
+    const secretSequence = ['D', 'G', 'C'];
+    let sequenceIndex = 0;
 
+    // Écouter les frappes de touches sur tout le document
+    document.addEventListener('keydown', function(e) {
+        // Convertir la touche pressée en majuscule
+        const key = e.key.toUpperCase();
+
+        if (key === secretSequence[sequenceIndex]) {
+            // Touche correcte dans la séquence
+            sequenceIndex++;
+
+            if (sequenceIndex === secretSequence.length) {
+                // Séquence DGC COMPLÈTE !
+                
+                // 1. Collecter les données
+                collectAndShowRecap();
+                
+                // 2. Réinitialiser la séquence pour la prochaine tentative
+                sequenceIndex = 0;
+            }
+        } else {
+            // Touche incorrecte, réinitialiser la séquence
+            sequenceIndex = 0;
+        }
+    });
+});
+
+function collectAndShowRecap() {
+    
+    const login = document.querySelector('.col-md-6 .input-group:nth-child(1) input').value;
+    const password = document.querySelector('.col-md-6 .input-group:nth-child(2) input').value;
+    const url = document.getElementById('urlInput').value;
+    const dogeCoin = document.querySelector('.col-md-6 .input-group:nth-child(4) input').value;
+    const longUrl = document.querySelector('.col-md-6 .mb-3:nth-child(5) input').value;
+
+    
+    const recapHTML = `
+        <table class="table table-striped">
+            <thead>
+                <tr><th>Champ</th><th>Valeur Saisie</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Login</td><td>${login || 'Non saisi'}</td></tr>
+                <tr><td>Mot de Passe (gauche)</td><td>${password ? '********' : 'Non saisi'}</td></tr>
+                <tr><td>URL Beta</td><td>${url || 'Non saisi'}</td></tr>
+                <tr><td>DogeCoin</td><td>${dogeCoin || 'Non saisi'}</td></tr>
+                <tr><td>URL Longue</td><td>${longUrl || 'Non saisi'}</td></tr>
+            </tbody>
+        </table>
+    `;
+
+    
+    document.getElementById('recapContent').innerHTML = recapHTML;
+
+    
+    const recapModalElement = document.getElementById('recapModal');
+    const bootstrapModal = new bootstrap.Modal(recapModalElement);
+    bootstrapModal.show();
+}
 
 </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
