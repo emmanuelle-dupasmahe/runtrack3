@@ -67,15 +67,15 @@
             <div class="col-lg-4">
                 <div class="list-group sidebar-menu shadow-sm">
                     <a href="#" class="list-group-item list-group-item-action active-link border-0 rounded-top">Limbes</a>
-                    <a href="#" class="list-group-item list-group-item-action border-0">Luxure</a>
-                    <a href="#" class="list-group-item list-group-item-action border-0">Gourmandise</a>
-                    <a href="#" class="list-group-item list-group-item-action border-0">Avarice</a>
-                    <a href="#" class="list-group-item list-group-item-action border-0">Colere</a>
-                    <a href="#" class="list-group-item list-group-item-action border-0">Heresie</a>
-                    <a href="#" class="list-group-item list-group-item-action border-0">Violence</a>
-                    <a href="#" class="list-group-item list-group-item-action border-0">Ruse et Tromperie</a>
-                    <a href="#" class="list-group-item list-group-item-action border-0">Trahison</a>
-                    <a href="#" class="list-group-item list-group-item-action border-0 rounded-bottom">Internet Explorer</a>
+                    <a href="#" class="list-group-item list-group-item-action active-link border-0">Luxure</a>
+                    <a href="#" class="list-group-item list-group-item-action active-link border-0">Gourmandise</a>
+                    <a href="#" class="list-group-item list-group-item-action active-link border-0">Avarice</a>
+                    <a href="#" class="list-group-item list-group-item-action active-link border-0">Colere</a>
+                    <a href="#" class="list-group-item list-group-item-action active-link border-0">Heresie</a>
+                    <a href="#" class="list-group-item list-group-item-action active-link border-0">Violence</a>
+                    <a href="#" class="list-group-item list-group-item-action active-link border-0">Ruse et Tromperie</a>
+                    <a href="#" class="list-group-item list-group-item-action active-link border-0">Trahison</a>
+                    <a href="#" class="list-group-item list-group-item-action active-link border-0 rounded-bottom">Internet Explorer</a>
                 </div>
             </div>
         </div>
