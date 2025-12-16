@@ -50,8 +50,11 @@
                     <p>Le sens le plus courant désigne notre planète, la Terre, avec ses habitants et son environnement plus ou moins naturel.</p>
                     <p>Le sens étendu désigne l'univers dans son ensemble.</p>
                     
-                    <button class="btn btn-danger me-3" onclick="rebooterMonde()">Rebooter le Monde</button>
-                    
+                    <button class="btn btn-danger me-3" onclick="rebooterMonde()">
+                    <span id="rebootSpinner" class="spinner-border spinner-border-sm me-2 text-primary" role="status" aria-hidden="true"></span>
+                    Rebooter le Monde</button>
+
+
                     <nav class="d-inline-block">
                         <ul class="pagination pagination-sm mb-0">
                             <li class="page-item disabled"><a class="page-link" href="#">&laquo;</a></li>
@@ -399,6 +402,66 @@ function collectAndShowRecap() {
     const bootstrapModal = new bootstrap.Modal(recapModalElement);
     bootstrapModal.show();
 }
+const spinnerColors = ['text-primary', 'text-secondary', 'text-success', 'text-danger', 'text-warning', 'text-info', 'text-light', 'text-dark'];
+
+// --- Fonction pour changer la couleur aléatoirement ---
+function changerCouleurSpinner() {
+    const spinner = document.getElementById('rebootSpinner');
+    if (spinner) {
+        // 1. Retirer toutes les anciennes classes de couleur
+        spinnerColors.forEach(color => {
+            spinner.classList.remove(color);
+        });
+
+        // 2. Choisir une nouvelle couleur aléatoire
+        const randomIndex = Math.floor(Math.random() * spinnerColors.length);
+        const nouvelleCouleur = spinnerColors[randomIndex];
+        
+        // 3. Appliquer la nouvelle couleur
+        spinner.classList.add(nouvelleCouleur);
+        
+        // Optionnel : rendre le spinner visible brièvement
+        spinner.style.display = 'inline-block';
+        setTimeout(() => {
+            // Masquer le spinner après 1 seconde
+            spinner.style.display = 'none'; 
+        }, 1000); 
+    }
+}
+
+// --- Écouteur de soumission de formulaire ---
+document.addEventListener('DOMContentLoaded', (event) => {
+    // ... (votre code existant pour progress bar et DGC) ...
+
+    const submitButton = document.getElementById('submitButton');
+
+    // Cibler le formulaire parent du bouton (le plus sûr est de cibler le bouton et son parent)
+    const form = submitButton.closest('form'); 
+
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Empêcher l'envoi du formulaire (rechargement de la page)
+
+            const emailInput = document.getElementById('emailInput');
+            const passwordInput = document.getElementById('passwordInput');
+
+            // Validation : Les champs ne doivent pas être vides
+            const emailValue = emailInput ? emailInput.value.trim() : '';
+            const passwordValue = passwordInput ? passwordInput.value.trim() : '';
+
+            if (emailValue !== '' && passwordValue !== '') {
+                // Validation réussie
+                changerCouleurSpinner();
+                
+                // Ici, vous pourriez ajouter d'autres actions après la validation (ex: effacer les champs)
+
+            } else {
+                // Validation échouée
+                alert("Veuillez saisir un Email et un Mot de Passe valides pour valider.");
+            }
+        });
+    }
+});
 
 </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
