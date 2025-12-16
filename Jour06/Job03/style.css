@@ -1,108 +1,15 @@
-
-        .container.mt-4 {
-            background-color: #c4c5c7ff;
-            border:1px solid #212529;
-            padding-top: 1px;
-            padding-bottom: 20px;
-            position: relative;
-        } 
-        .container.mt-4 .nav{
-            background-color: #c4c5c7ff; 
-            margin-top: -1px;
-            justify-content: start;
-            position: absolute; 
-            top: -1px;      
-            left: 0;         
-            right: 0;        
-            width: 100%;     
-            justify-content: start;
-            z-index: 1000;
-            pointer-events: auto;
-        }
-        .header-section {
-            background-color: #c4c5c7ff;
-            padding: 20px 0;
-            margin-bottom: 20px;
-            border-radius: .3rem;
-            margin-top: 50px;
-            pointer-events: none;
-        }
-        .sidebar-menu a {
-            border-bottom: 1px solid #dee2e6;
-            padding: 8px 15px;
-            display: block;
-            text-decoration: none;
-            color: #212529;
-            background-color: white;
-        }
-        .sidebar-menu a:hover {
-            background-color: #e9ecef;
-        }
-        .sidebar-menu .active-link {
-            background-color: #0d6efd;
-            color: white;
-            font-weight: bold;
-        }
-        .install-progress-bar {
-            height: 30px;
-            background-color: #e9ecef; 
-            border-radius: .25rem;
-            margin-top: 20px;
+/*style pour la maquette*/
+        .row > div {
+            border: 1px solid #00000020;
+            padding: 10px;
             margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 10px;
-            font-size: 0.9rem;
-        }
-        .install-progress-bar .progress-bar {
-             background-color: #f2d114ff; 
-        }
-        .install-title {
-            color: #495057; 
-            font-weight: bold;
-        }
-        .link-block {
-            background-color: white;
-            padding: 20px;
-            margin-top: 40px;
-            position: relative; 
-            border-radius: .3rem;
-            border: 1px solid #e9ecef;
-        }
-        .post-button {
-            position: absolute;
-            top: -20px; 
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: black;
             color: white;
-            border: none;
-            padding: 5px 20px;
-            border-radius: .25rem;
-            font-weight: bold;
+            text-align: center;
         }
-        .link-table td:first-child {
-            text-align: right;
-            padding-right: 15px;
-            font-weight: 500;
-        }
-        .link-input {
-            width: 100%;
-            padding: 5px;
-            border: 1px solid #ced4da;
-            background-color: #f8f9fa; 
-        }
-        .confidentiality-btn {
-            position: fixed; 
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            display: inline-flex;
-            align-items: center;
-        }
-        .grey-progress-container {
-        max-width: 650px; 
-        margin: 0 auto; 
-        padding: 0 15px; 
-    }
+        .cyan-block { height: 100px; background-color: #72D7EE; }
+        .blue-block-tall { height: 150px; background-color: #92B9F8; }
+        .blue-block-short { height: 70px; background-color: #92B9F8; }
+        .purple-block-wide { height: 80px; background-color: #BC9BF8; }
+        .purple-block-narrow { height: 80px; background-color: #BC9BF8; }
+        .orange-block { height: 50px; background-color: #F8B492; }
+    
