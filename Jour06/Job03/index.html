@@ -17,41 +17,58 @@
         }
         
         .cyan-block { height: 100px; background-color: #72D7EE; }
-        .blue-block-tall { height: 150px; background-color: #92B9F8; }
-        .blue-block-short { height: 70px; background-color: #92B9F8; }
-        .purple-block-wide { height: 80px; background-color: #BC9BF8; }
-        .purple-block-narrow { height: 80px; background-color: #BC9BF8; }
+        .blue-block { height: 150px; background-color: #92B9F8; }
+        .purple-block { height: 80px; background-color: #BC9BF8; }
         .orange-block { height: 50px; background-color: #F8B492; }
     </style> 
 </head>
 <body>
+<main>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 cyan-block">Cyan Header</div>
+                <div class="col-sm">
+                    <p class="p-3 fs-5 border blue-block">Test</p>
+                </div>
+                <div class="col">
+                    <p class="p-3 fs-5 border blue-block">Test</p>
+                </div>
+                <div class="col">
+                    <p class="p-3 fs-5 border blue-block">Test</p>
+                </div>
+            </div>
+        </div>
 
-<div class="container border border-2 p-2">
-    <div class="row g-md-3">
+        <div class="container text-center">
+            <div class="row justify-content-center">
+                <div class="col-sm col-6 jus">
+                    <p class="p-3 fs-5 border purple-block">Test</p>
+                </div>
+                <div class="col-sm-4 col-10">
+                    <p class="p-3 fs-5 border purple-block">Test</p>
+                </div>
+            </div>
+        </div>
 
-        <div class="col-12 cyan-block">Cyan Header</div>
 
-        <div class="col-12 col-md-3 blue-block-tall">Bloc A (Desktop: 3)</div>
 
-        <div class="col-12 col-md-3 blue-block-tall ms-md-1">Bloc B (Desktop: 3)</div>
+        <div class="container text-center">
+            <div class="row gap-5" style="height: 100px;">
+                <div class="col align-self-sm-start border orange-block">
+                    One of three columns
+                </div>
+                <div class="col align-self-sm-center border orange-block">
+                    One of three columns
+                </div>
+                <div class="col align-self-sm-end border orange-block">
+                    One of three columns
+                </div>
+            </div>
+        </div>
 
-        <div class="col-12 col-md-3 blue-block-tall ms-md-1">Bloc C (Desktop: 3)</div>
-        
-        <div class="col-12  col-md-8 purple-block-wide">Bloc D (Desktop: 8)</div>
 
-        <div class="col-12 col-md-3 purple-block-narrow ms-md-1">Bloc E (Desktop: 3)</div>
 
-    </div>
-        
-        <div class="row">
-        <div class="col-4  col-md-3 orange-block">Bloc F</div>
-
-        <div class="col-4 offset-md-1 col-md-3 orange-block mt-md-3">Bloc G</div>
-
-        <div class="col-4 offset-md-1 col-md-3 orange-block mt-md-5">Bloc H</div>
-
-    </div>
-</div>
+    </main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
