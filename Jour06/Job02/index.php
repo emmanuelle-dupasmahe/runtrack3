@@ -39,7 +39,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Un Papillon</h5>
                         <p class="card-text small">Un papillon, c'est un peu comme une chenille, mais avec des ailes. Ne pas ingérer.</p>
-                        <a href="#" class="btn btn-primary d-block">Commander votre propre papillon</a>
+                        <a href="#" class="btn btn-primary d-block" data-bs-toggle="modal" data-bs-target="#papillonModal">Commander votre propre papillon</a>
                     </div>
                 </div>
 
@@ -50,14 +50,14 @@
                     <p>Le sens le plus courant désigne notre planète, la Terre, avec ses habitants et son environnement plus ou moins naturel.</p>
                     <p>Le sens étendu désigne l'univers dans son ensemble.</p>
                     
-                    <button class="btn btn-danger me-3">Rebooter le Monde</button>
+                    <button class="btn btn-danger me-3" onclick="rebooterMonde()">Rebooter le Monde</button>
                     
                     <nav class="d-inline-block">
                         <ul class="pagination pagination-sm mb-0">
                             <li class="page-item disabled"><a class="page-link" href="#">&laquo;</a></li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item active"><a class="page-link" href="#" onclick="changerPage(1); return false;">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#" onclick="changerPage(2); return false;">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#" onclick="changerPage(3); return false;">3</a></li>
                             <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
                         </ul>
                     </nav>
@@ -195,7 +195,83 @@
 </div>
 </div>
 </div>
+<!--ajout d'un script pour des citations du film Blade Runner-->
+    <script>
+    const citationsBladeRunner = [
+    // PAGE 1 (Index 0) 
+    { titre: "Bonjour, monde !", paragraphe1: "Le monde est la matière, l'espace et les phénomènes qui nous sont accessibles par les sens, l'expérience ou la raison.", paragraphe2: "Le sens le plus courant désigne notre planète, la Terre, avec ses habitants et son environnement plus ou moins naturel." },
+    // PAGE 2 (Index 1) -  Citation 1
+    { titre: "Améliorer le Modèle", paragraphe1: "Les Réplicants sont comme n'importe quelle autre machine. Ils sont soit un bénéfice, soit un danger. S'ils sont un danger, ils sont éliminés.", paragraphe2: "Nous avons besoin d'êtres plus humains que l'humain." },
+    // PAGE 3 (Index 2) -  Citation 2
+    { titre: "Le Rebond du Monde", paragraphe1: "Si seulement tu pouvais voir ce que j'ai vu avec tes yeux. Tous ces moments se perdront dans le temps, comme des larmes sous la pluie.", paragraphe2: "Les choses ne se passent pas toujours comme prévu. Il est temps de mourir." }
+];
 
+    function rebooterMonde() {
+       
+        const articleBlock = document.querySelector('.article-block');
+        
+        // une citation aléatoire
+        const randomIndex = Math.floor(Math.random() * citationsBladeRunner.length);
+        const citation = citationsBladeRunner[randomIndex];
+        
+        // mise à jour le contenu HTML
+        articleBlock.innerHTML = `
+            <h2>${citation.titre}</h2>
+            <p>${citation.paragraphe1}</p>
+            <p>${citation.paragraphe2}</p>
+            
+            <button class="btn btn-danger me-3" onclick="rebooterMonde()">Rebooter le Monde</button>
+            
+            <nav class="d-inline-block">
+                <ul class="pagination pagination-sm mb-0">
+                    <li class="page-item disabled"><a class="page-link" href="#">&laquo;</a></li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                </ul>
+            </nav>
+        `;
+    }
+
+    function getPaginationHTML(activePage) {
+        // La pagination est reconstruite à chaque fois, intégrant la classe 'active'
+        return `
+            <nav class="d-inline-block">
+                <ul class="pagination pagination-sm mb-0">
+                    <li class="page-item disabled"><a class="page-link" href="#">&laquo;</a></li>
+                    <li class="page-item ${activePage === 1 ? 'active' : ''}"><a class="page-link" href="#" onclick="changerPage(1); return false;">1</a></li>
+                    <li class="page-item ${activePage === 2 ? 'active' : ''}"><a class="page-link" href="#" onclick="changerPage(2); return false;">2</a></li>
+                    <li class="page-item ${activePage === 3 ? 'active' : ''}"><a class="page-link" href="#" onclick="changerPage(3); return false;">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                </ul>
+            </nav>
+        `;
+    }
+
+    // --- 3. Fonction pour changer de page (appelée par la pagination) ---
+    function changerPage(pageIndex) {
+        // Sélectionne le bloc de contenu
+        const articleBlock = document.querySelector('.article-block');
+        
+        // Récupère la citation correspondante (page 1 -> index 0, etc.)
+        const citation = citationsBladeRunner[pageIndex - 1]; 
+        
+        // Met à jour tout le contenu HTML
+        articleBlock.innerHTML = `
+            <h2>${citation.titre}</h2>
+            <p class="fst-italic">Contenu de la page ${pageIndex} :</p>
+            <p>${citation.paragraphe1}</p>
+            <p>${citation.paragraphe2}</p>
+            
+            <button class="btn btn-danger me-3" onclick="rebooterMonde()">Rebooter le Monde</button>
+            
+            ${getPaginationHTML(pageIndex)} 
+        `;
+    }
+
+
+</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 </body>
