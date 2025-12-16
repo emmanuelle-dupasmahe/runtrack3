@@ -19,7 +19,7 @@
     <div class="container mt-4">
         <nav class="nav nav border-top border-bottom bg-light w-100">
             <a class="nav-link text-dark" href="#">LPTF</a>
-            <a class="nav-link text-dark" href="#">Accueil</a>
+            <a class="nav-link text-dark" href="https://laplateforme.io/">Accueil</a>
             <a class="nav-link text-dark" href="#">Units</a>
             <a class="nav-link text-dark" href="#">Jobs</a>
             <a class="nav-link text-dark" href="#">Skills</a>
