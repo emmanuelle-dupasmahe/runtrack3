@@ -103,7 +103,7 @@
         </form>
     </section>
 
-    <footer class="bg-indigo-700 text-white p-8 mt-10">
+    <footer class="bg-indigo-800 text-white p-8 mt-10">
     <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
         <nav class="mb-4 md:mb-0">
             <ul class="flex flex-wrap justify-center gap-6">
@@ -113,7 +113,7 @@
                 <li><a href="index.html" class="hover:text-indigo-400 transition">Rechercher</a></li>
             </ul>
         </nav>
-        <p class="text-fuchsia-400 text-sm italic">&copy; 2025. Tous droits réservés.</p>
+        <p class="text-fuchsia-600 text-sm italic">&copy; 2025. Tous droits réservés.</p>
     </div>
 </footer>
 
