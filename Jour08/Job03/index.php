@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tailwind 1</title>
+    <title>Tailwind 2</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 <body>
 
-    <header>
-        <h1>Mon Site Web</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="index.html">Inscription</a></li>
-                <li><a href="index.html">Connexion</a></li>
-                <li><a href="index.html">Rechercher</a></li>
-            </ul>
-        </nav>
-    </header>
+    <header class="bg-indigo-600 text-white p-4 flex justify-between items-center shadow-md">
+    <h1 class="text-2xl font-bold">Mon Site Web</h1>
+    <nav>
+        <ul class="flex space-x-6">
+            <li><a href="index.html" class="hover:text-indigo-200 transition">Accueil</a></li>
+            <li><a href="index.html" class="hover:text-indigo-200 transition">Inscription</a></li>
+            <li><a href="index.html" class="hover:text-indigo-200 transition">Connexion</a></li>
+            <li><a href="index.html" class="hover:text-indigo-200 transition">Rechercher</a></li>
+        </ul>
+    </nav>
+</header>
 
     <hr> <section>
         <h2>Création de Compte</h2>
@@ -102,17 +103,19 @@
         </form>
     </section>
 
-     <footer>
-        <nav>
-            <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="index.html">Inscription</a></li>
-                <li><a href="index.html">Connexion</a></li>
-                <li><a href="index.html">Rechercher</a></li>
+    <footer class="bg-indigo-700 text-white p-8 mt-10">
+    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+        <nav class="mb-4 md:mb-0">
+            <ul class="flex flex-wrap justify-center gap-6">
+                <li><a href="index.html" class="hover:text-indigo-400 transition">Accueil</a></li>
+                <li><a href="index.html" class="hover:text-indigo-400 transition">Inscription</a></li>
+                <li><a href="index.html" class="hover:text-indigo-400 transition">Connexion</a></li>
+                <li><a href="index.html" class="hover:text-indigo-400 transition">Rechercher</a></li>
             </ul>
         </nav>
-        <p>&copy; 2025. Tous droits réservés.</p>
-    </footer>
+        <p class="text-fuchsia-400 text-sm italic">&copy; 2025. Tous droits réservés.</p>
+    </div>
+</footer>
 
 </body>
 </html>
