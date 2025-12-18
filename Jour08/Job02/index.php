@@ -103,7 +103,7 @@
         </form>
     </section>
 
-    <hr> <footer>
+     <footer>
         <nav>
             <ul>
                 <li><a href="index.html">Accueil</a></li>
