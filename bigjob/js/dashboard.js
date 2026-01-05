@@ -96,6 +96,65 @@ function renderRequests() {
     });
 }
 
+//fonction pour afficher les utilisateurs pour admin uniquement avec protection json
+async function renderUsers() {
+    const tableUsers = document.getElementById('table-users');
+    if (!tableUsers) return;
+
+    try {
+        // Récupérer les utilisateurs du fichier JSON (Lecture seule)
+        const response = await fetch('users.json');
+        const defaultUsers = await response.json();
+        const defaultUsersWithFlag = defaultUsers.map(u => ({ ...u, isLocal: false }));
+        
+        // Récupérer les utilisateurs du LocalStorage (Modifiables)
+        const localUsers = JSON.parse(localStorage.getItem("users")) || [];
+        const localUsersWithFlag = localUsers.map(u => ({ ...u, isLocal: true }));
+        
+        // Fusion
+        const allUsers = [...defaultUsersWithFlag, ...localUsersWithFlag];
+
+        tableUsers.innerHTML = "";
+
+        allUsers.forEach(u => {
+            const row = document.createElement('tr');
+            
+            // Logique de bouton : on ne permet la promotion que si isLocal est true
+            let actionBtn = "";
+            if (u.isLocal && u.role === 'user') {
+                actionBtn = `<button onclick="promoteToModerator('${u.email}')" class="btn btn-sm btn-outline-warning">Nommer Modo</button>`;
+            } else if (!u.isLocal) {
+                actionBtn = `<span class="badge bg-secondary">Lecture seule (JSON)</span>`;
+            } else {
+                actionBtn = `<span class="text-muted small">Modonow</span>`;
+            }
+
+            row.innerHTML = `
+                <td>${u.nom} ${u.prenom}</td>
+                <td>${u.email}</td>
+                <td><span class="badge bg-info">${u.role}</span></td>
+                <td>${actionBtn}</td>
+            `;
+            tableUsers.appendChild(row);
+        });
+    } catch (e) {
+        console.error("Erreur :", e);
+    }
+}
+
+//fonction pour changer le rôle
+function promoteToModerator(email) {
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+    const userIndex = users.findIndex(u => u.email === email);
+
+    if (userIndex !== -1) {
+        users[userIndex].role = "moderator";
+        localStorage.setItem("users", JSON.stringify(users));
+        alert(email + " est maintenant Modérateur.");
+        renderUsers(); // Rafraîchir la liste
+    }
+}
+
 // Initialisation
 document.addEventListener('DOMContentLoaded', () => {
     // Affichage du nom
@@ -111,7 +170,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // "admin-panel" 
         const adminPanel = document.getElementById("admin-section");
         if(adminPanel) adminPanel.classList.remove('d-none');
+        renderUsers();
     }
+
+    
 
     // Sécurité input date
     const datePicker = document.getElementById('date-picker');
