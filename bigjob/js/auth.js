@@ -30,23 +30,49 @@ async function login(email, password) {
 }
 
 // Écouteur du formulaire de login
+
 document.getElementById('login-form')?.addEventListener('submit', async function(e) {
     e.preventDefault();
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+    
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const errorDiv = document.getElementById('error-message');
 
+    // Réinitialisation de l'affichage
+    errorDiv.classList.add('d-none');
+    emailInput.classList.remove('is-invalid');
+    passwordInput.classList.remove('is-invalid');
+
+    const email = emailInput.value;
+    const password = passwordInput.value;
+
+    // Validation visuelle des champs vides ou mauvais format
     if (!isValidEmail(email) || !isLaPlateformeEmail(email)) {
-        alert("Email invalide ou domaine non autorisé.");
+        emailInput.classList.add('is-invalid');
+        errorDiv.textContent = "L'adresse email doit être une adresse @laplateforme.io valide.";
+        errorDiv.classList.remove('d-none');
         return;
     }
 
+    if (password === "") {
+        passwordInput.classList.add('is-invalid');
+        return;
+    }
+
+    // Appel de la fonction login
     const result = await login(email, password);
+    
     if (result.success) {
         window.location.href = "dashboard.html";
     } else {
-        alert(result.message);
+        // Erreur d'identifiants
+        errorDiv.textContent = result.message;
+        errorDiv.classList.remove('d-none');
+        emailInput.classList.add('is-invalid');
+        passwordInput.classList.add('is-invalid');
     }
 });
+
     //inscription 
 function register(email, password, nom, prenom) {
     const users = JSON.parse(localStorage.getItem("users")) || [];
@@ -71,26 +97,52 @@ function register(email, password, nom, prenom) {
 }
 
 //écouteur du formulaire
+
+
+
+
 document.getElementById('register-form')?.addEventListener('submit', function(e) {
     e.preventDefault();
 
-    const nom = document.getElementById('reg-nom').value;
-    const prenom = document.getElementById('reg-prenom').value;
-    const email = document.getElementById('reg-email').value;
-    const password = document.getElementById('reg-password').value;
+    const nom = document.getElementById('reg-nom');
+    const prenom = document.getElementById('reg-prenom');
+    const email = document.getElementById('reg-email');
+    const password = document.getElementById('reg-password');
+    const statusDiv = document.getElementById('status-message');
 
-    // Validation via tes fonctions existantes
-    if (!isValidEmail(email) || !isLaPlateformeEmail(email)) {
-        alert("Email invalide ou domaine @laplateforme.io requis.");
+    // Réinitialisation
+    statusDiv.classList.add('d-none', 'alert-danger', 'alert-success');
+    [nom, prenom, email, password].forEach(el => el.classList.remove('is-invalid'));
+
+    // Vérifications de base
+    if (!nom.value || !prenom.value || !password.value) {
+        statusDiv.textContent = "Tous les champs sont obligatoires.";
+        statusDiv.classList.add('alert-danger', 'd-none'); // On peut aussi utiliser la validation native
         return;
     }
 
-    const result = register(email, password, nom, prenom);
+    if (!isValidEmail(email.value) || !isLaPlateformeEmail(email.value)) {
+        email.classList.add('is-invalid');
+        statusDiv.textContent = "L'email doit être une adresse @laplateforme.io valide.";
+        statusDiv.classList.add('alert-danger');
+        statusDiv.classList.remove('d-none');
+        return;
+    }
+
+    const result = register(email.value, password.value, nom.value, prenom.value);
 
     if (result.success) {
-        alert("Compte créé ! Vous pouvez vous connecter.");
-        window.location.href = "login.html";
+        statusDiv.textContent = "Compte créé avec succès ! Redirection...";
+        statusDiv.classList.add('alert-success');
+        statusDiv.classList.remove('d-none');
+        
+        // Petite pause pour laisser l'utilisateur lire le succès avant de rediriger
+        setTimeout(() => {
+            window.location.href = "login.html";
+        }, 2000);
     } else {
-        alert(result.message);
+        statusDiv.textContent = result.message;
+        statusDiv.classList.add('alert-danger');
+        statusDiv.classList.remove('d-none');
     }
 });
