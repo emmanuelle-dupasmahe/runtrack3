@@ -47,3 +47,50 @@ document.getElementById('login-form')?.addEventListener('submit', async function
         alert(result.message);
     }
 });
+    //inscription 
+function register(email, password, nom, prenom) {
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    
+    // Vérifier si l'utilisateur existe déjà
+    if (users.find(u => u.email === email)) {
+        return { success: false, message: "Cet email est déjà utilisé." };
+    }
+
+    const newUser = {
+        id: Date.now(),
+        email: email,
+        password: password,
+        nom: nom,
+        prenom: prenom,
+        role: "user" // Par défaut, un nouvel inscrit est un simple utilisateur
+    };
+
+    users.push(newUser);
+    localStorage.setItem("users", JSON.stringify(users));
+    return { success: true };
+}
+
+//écouteur du formulaire
+document.getElementById('register-form')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const nom = document.getElementById('reg-nom').value;
+    const prenom = document.getElementById('reg-prenom').value;
+    const email = document.getElementById('reg-email').value;
+    const password = document.getElementById('reg-password').value;
+
+    // Validation via tes fonctions existantes
+    if (!isValidEmail(email) || !isLaPlateformeEmail(email)) {
+        alert("Email invalide ou domaine @laplateforme.io requis.");
+        return;
+    }
+
+    const result = register(email, password, nom, prenom);
+
+    if (result.success) {
+        alert("Compte créé ! Vous pouvez vous connecter.");
+        window.location.href = "login.html";
+    } else {
+        alert(result.message);
+    }
+});

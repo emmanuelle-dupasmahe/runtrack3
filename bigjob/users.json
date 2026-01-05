@@ -38,5 +38,13 @@
 "prenom": "Stephane",
 "password": "hash123",
 "role": "user"
+},
+{
+  "id": 6,
+  "email": "admin@laplateforme.io",
+  "nom": "Admin",
+  "prenom": "Super",
+  "password": "admin",
+  "role": "admin"
 }
 ]
