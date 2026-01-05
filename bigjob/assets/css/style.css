@@ -1,35 +1,47 @@
-        body {
-            background: linear-gradient(135deg, #0084FA 0%, #044075 100%);
-            height: 100vh;
-            display: flex;
-            align-items: center;
-        }
-        .login-card {
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-        .btn-primary {
-            background-color: #0084FA;
-            border: none;
-        }
-        .btn-primary:hover {
-            background-color: #1b57cf;
-        }
-        /*responsive*/
+.d-none { 
+    display: none !important; 
+}        
+body {
+    background: linear-gradient(135deg, #0084FA 0%, #044075 100%);
+    background-attachment: fixed; 
+    min-height: 100vh;
+    margin: 0;
+}
 
-    /* Styles mobile par défaut (Mobile First) */
-    .container { 
-        width: 100%; 
-        padding-right: 15px;
-        padding-left: 15px;
-        margin-right: auto;
-        margin-left: auto;
-    }
+/*  classe spécifique pour centrer Login et Register */
+.auth-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
 
-    /* Adaptation pour tablette et desktop (Breakpoint Bootstrap md) */
-    @media (min-width: 768px) {
+/* Style des cartes */
+.login-card, .card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.btn-primary {
+    background-color: #0084FA;
+    border: none;
+}
+
+/* Responsive (Mobile First) */
+.container { 
+    width: 100%; 
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 768px) {
     .container { 
-        width: 750px; 
+        width: 900px; 
     }
+    .col-md-6.col-lg-5 {
+        min-width: 400px;
+}
 }
