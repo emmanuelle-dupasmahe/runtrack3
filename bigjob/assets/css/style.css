@@ -16,3 +16,20 @@
         .btn-primary:hover {
             background-color: #1b57cf;
         }
+        /*responsive*/
+
+    /* Styles mobile par défaut (Mobile First) */
+    .container { 
+        width: 100%; 
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    /* Adaptation pour tablette et desktop (Breakpoint Bootstrap md) */
+    @media (min-width: 768px) {
+    .container { 
+        width: 750px; 
+    }
+}
