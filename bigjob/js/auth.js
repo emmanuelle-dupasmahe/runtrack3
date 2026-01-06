@@ -19,7 +19,7 @@ async function login(email, password) {
         const user = allUsers.find(u => u.email === email && u.password === password);
 
         if (user) {
-            // Utilisation de ta clé "currentUser"
+            // Utilisation de la clé "currentUser"
             sessionStorage.setItem("currentUser", JSON.stringify(user));
             return { success: true };
         }
@@ -63,7 +63,7 @@ document.getElementById('login-form')?.addEventListener('submit', async function
     const result = await login(email, password);
     
     if (result.success) {
-        window.location.href = "dashboard.html";
+        window.location.href = "calendar.html";
     } else {
         // Erreur d'identifiants
         errorDiv.textContent = result.message;
@@ -88,7 +88,7 @@ function register(email, password, nom, prenom) {
         password: password,
         nom: nom,
         prenom: prenom,
-        role: "user" // Par défaut, un nouvel inscrit est un simple utilisateur
+        role: "user" // un nouvel inscrit est un simple utilisateur
     };
 
     users.push(newUser);
@@ -97,9 +97,6 @@ function register(email, password, nom, prenom) {
 }
 
 //écouteur du formulaire
-
-
-
 
 document.getElementById('register-form')?.addEventListener('submit', function(e) {
     e.preventDefault();
@@ -138,7 +135,7 @@ document.getElementById('register-form')?.addEventListener('submit', function(e)
         
         // Petite pause pour laisser l'utilisateur lire le succès avant de rediriger
         setTimeout(() => {
-            window.location.href = "login.html";
+            window.location.href = "calendar.html";
         }, 2000);
     } else {
         statusDiv.textContent = result.message;

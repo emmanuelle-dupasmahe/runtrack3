@@ -1,70 +1,33 @@
-// récupération de l'utilisateur et protection
-const user = JSON.parse(sessionStorage.getItem("currentUser"));
 
-if (!user) {
-    window.location.href = "login.html";
-}
 
-// vérification des rôles
-function isAdmin(user) {
-    return user && user.role === "admin";
-}
+document.addEventListener('DOMContentLoaded', async () => {
+    const user = JSON.parse(sessionStorage.getItem("currentUser"));
 
-function isModerator(user) {
-    return user && (user.role === "moderator" || user.role === "admin");
-}
-
-// gestion du calendrier et des users
-function isPastDate(dateString) {
-    const date = new Date(dateString);
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    return date < today;
-}
-
-function requestPresence() {
-    const datePicker = document.getElementById('date-picker');
-    const date = datePicker.value;
-
-    if (!date) {
-        alert("Veuillez choisir une date.");
+    // Vérification d'accès
+    if (!user || user.role === 'user') {
+        window.location.href = "calendar.html";
         return;
     }
 
-    if (isPastDate(date)) {
-        alert("Impossible de réserver une date passée.");
-        return;
+    // Affichage du nom
+    document.getElementById('user-name').textContent = `${user.prenom} ${user.nom}`;
+
+    // affichage des demandes
+    document.getElementById("mod-section").classList.remove('d-none');
+    renderRequests(); 
+
+    // Afficher les users seulement si admin
+    if (user.role === 'admin') {
+        document.getElementById("admin-section").classList.remove('d-none');
+        renderUsers();
     }
 
-    const requests = JSON.parse(localStorage.getItem("requests")) || [];
-    
-    requests.push({
-        id: Date.now(),
-        userId: user.id,
-        userNom: `${user.prenom} ${user.nom}`,
-        date: date,
-        status: "pending"
+    // Gestion de la déconnexion
+    document.getElementById('logout-btn').addEventListener('click', () => {
+        sessionStorage.removeItem("currentUser");
+        window.location.href = "login.html";
     });
-
-    localStorage.setItem("requests", JSON.stringify(requests));
-    alert("Demande envoyée !");
-    
-    // Si on est modérateur, on rafraîchit la liste immédiatement
-    if (isModerator(user)) renderRequests();
-}
-
-// approbation ou refus
-function updateRequestStatus(id, newStatus) {
-    const requests = JSON.parse(localStorage.getItem("requests")) || [];
-    const requestIndex = requests.findIndex(r => r.id === id);
-    
-    if (requestIndex !== -1) {
-        requests[requestIndex].status = newStatus;
-        localStorage.setItem("requests", JSON.stringify(requests));
-        renderRequests(); // Rafraîchit l'affichage sans recharger toute la page
-    }
-}
-
+});
 // Affichage des demandes
 function renderRequests() {
     const requests = JSON.parse(localStorage.getItem("requests")) || [];
@@ -94,6 +57,17 @@ function renderRequests() {
         `;
         tableBody.appendChild(row);
     });
+}
+// approbation ou refus
+function updateRequestStatus(id, newStatus) {
+    const requests = JSON.parse(localStorage.getItem("requests")) || [];
+    const requestIndex = requests.findIndex(r => r.id === id);
+    
+    if (requestIndex !== -1) {
+        requests[requestIndex].status = newStatus;
+        localStorage.setItem("requests", JSON.stringify(requests));
+        renderRequests(); // Rafraîchit l'affichage sans recharger toute la page
+    }
 }
 
 //fonction pour afficher les utilisateurs pour admin uniquement avec protection json
@@ -173,34 +147,3 @@ function promoteToModerator(email) {
         renderUsers(); // Rafraîchir la liste
     }
 }
-
-// Initialisation
-document.addEventListener('DOMContentLoaded', () => {
-    // Affichage du nom
-    document.getElementById('user-name').textContent = `${user.prenom} ${user.nom}`;
-
-    // Affichage conditionnel selon le rôle 
-    if (isModerator(user)) {
-        document.getElementById("mod-section").classList.remove('d-none');
-        renderRequests();
-    }
-
-    if (isAdmin(user)) {
-        // "admin-panel" 
-        const adminPanel = document.getElementById("admin-section");
-        if(adminPanel) adminPanel.classList.remove('d-none');
-        renderUsers();
-    }
-
-    
-
-    // Sécurité input date
-    const datePicker = document.getElementById('date-picker');
-    if(datePicker) datePicker.min = new Date().toISOString().split("T")[0];
-
-    // Déconnexion
-    document.getElementById('logout-btn').addEventListener('click', () => {
-        sessionStorage.removeItem("currentUser");
-        window.location.href = "login.html";
-    });
-});
