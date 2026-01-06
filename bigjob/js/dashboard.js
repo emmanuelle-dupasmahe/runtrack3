@@ -1,4 +1,4 @@
-// récupération de l'utilsateur et protection
+// récupération de l'utilisateur et protection
 const user = JSON.parse(sessionStorage.getItem("currentUser"));
 
 if (!user) {
@@ -121,12 +121,22 @@ async function renderUsers() {
             
             // Logique de bouton : on ne permet la promotion que si isLocal est true
             let actionBtn = "";
-            if (u.isLocal && u.role === 'user') {
-                actionBtn = `<button onclick="promoteToModerator('${u.email}')" class="btn btn-sm btn-outline-warning">Nommer Modo</button>`;
-            } else if (!u.isLocal) {
-                actionBtn = `<span class="badge bg-secondary">Lecture seule (JSON)</span>`;
+
+            if (u.isLocal) {
+            // Bouton promote uniquement si c'est encore un simple utilisateur
+            if (u.role === 'user') {
+                actionBtn = `<button onclick="promoteToModerator('${u.email}')" class="btn btn-sm btn-outline-warning me-1">Nommer Modo</button>`;
             } else {
-                actionBtn = `<span class="text-muted small">Modonow</span>`;
+            // indicateur visuel s'il est déjà modo
+                actionBtn = `<span class="text-muted small me-1">Modérateur</span>`;
+            }
+
+            // Bouton SUPPRIMER : pour les comptes locaux (isLocal)
+                actionBtn += `<button onclick="deleteUser('${u.email}')" class="btn btn-sm btn-outline-danger">Supprimer</button>`;
+
+            } else if (!u.isLocal) {
+            // fichier JSON
+                actionBtn = `<span class="badge bg-secondary">Lecture seule (JSON)</span>`;
             }
 
             row.innerHTML = `
@@ -139,6 +149,15 @@ async function renderUsers() {
         });
     } catch (e) {
         console.error("Erreur :", e);
+    }
+}
+// fonction pour supprimer l'utilisateur
+function deleteUser(email) {
+    if (confirm("Voulez-vous vraiment supprimer cet utilisateur ?")) {
+        let users = JSON.parse(localStorage.getItem("users")) || [];
+        users = users.filter(u => u.email !== email);
+        localStorage.setItem("users", JSON.stringify(users));
+        renderUsers(); // Rafraîchir la vue
     }
 }
 
