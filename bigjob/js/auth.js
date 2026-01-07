@@ -29,7 +29,7 @@ async function login(email, password) {
     }
 }
 
-// Écouteur du formulaire de login
+// écouteur du formulaire de login
 
 document.getElementById('login-form')?.addEventListener('submit', async function(e) {
     e.preventDefault();
@@ -40,7 +40,7 @@ document.getElementById('login-form')?.addEventListener('submit', async function
     const passwordInput = document.getElementById('password');
     const errorDiv = document.getElementById('error-message');
 
-    // Réinitialisation de l'affichage
+    // réinitialisation de l'affichage
     errorDiv.classList.add('d-none');
     emailInput.classList.remove('is-invalid');
     passwordInput.classList.remove('is-invalid');
@@ -48,7 +48,7 @@ document.getElementById('login-form')?.addEventListener('submit', async function
     const email = emailInput.value.trim();
     const password = passwordInput.value;
 
-    // Validation visuelle des champs vides ou mauvais format
+    // validation visuelle des champs vides ou mauvais format
     if (!isValidEmail(email) || !isLaPlateformeEmail(email)) {
         emailInput.classList.add('is-invalid');
         errorDiv.textContent = "L'adresse email doit être une adresse @laplateforme.io valide.";
@@ -61,13 +61,13 @@ document.getElementById('login-form')?.addEventListener('submit', async function
         return;
     }
 
-    // Appel de la fonction login
+    // appel de la fonction login
     const result = await login(email, password);
     
     if (result.success) {
         window.location.href = "calendar.html";
     } else {
-        // Erreur d'identifiants
+        // si erreur d'identifiants
         this.classList.remove('was-validated');
         errorDiv.textContent = result.message;
         errorDiv.classList.remove('d-none');
@@ -77,32 +77,45 @@ document.getElementById('login-form')?.addEventListener('submit', async function
     }
 });
 
-    //inscription 
-function register(email, password, nom, prenom) {
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-    
-    // Vérifier si l'utilisateur existe déjà
-    if (users.find(u => u.email === email)) {
-        return { success: false, message: "Cet email est déjà utilisé." };
+    //inscription fonction register
+
+async function register(email, password, nom, prenom) {
+    try {
+        // on nrécupère les utilisateurs du JSON
+        const response = await fetch('users.json');
+        const defaultUsers = await response.json();
+
+        // 2on récupère les utilisateurs du LocalStorage
+        const localUsers = JSON.parse(localStorage.getItem("users")) || [];
+        
+        // fusion pour la vérification d'unicité
+        const allUsers = [...defaultUsers, ...localUsers];
+
+        // on vérifie si l'utilisateur existe déjà quelque part
+        if (allUsers.find(u => u.email === email)) {
+            return { success: false, message: "Cet email est déjà utilisé (compte existant ou archive)." };
+        }
+
+        const newUser = {
+            id: Date.now(),
+            email: email,
+            password: password,
+            nom: nom,
+            prenom: prenom,
+            role: "user"
+        };
+
+        localUsers.push(newUser);
+        localStorage.setItem("users", JSON.stringify(localUsers));
+        return { success: true };
+    } catch (e) {
+        return { success: false, message: "Erreur technique lors de l'inscription." };
     }
-
-    const newUser = {
-        id: Date.now(),
-        email: email,
-        password: password,
-        nom: nom,
-        prenom: prenom,
-        role: "user" // un nouvel inscrit est un simple utilisateur
-    };
-
-    users.push(newUser);
-    localStorage.setItem("users", JSON.stringify(users));
-    return { success: true };
 }
 
 //écouteur du formulaire
 
-document.getElementById('register-form')?.addEventListener('submit', function(e) {
+document.getElementById('register-form')?.addEventListener('submit', async function(e) {
     e.preventDefault();
 
     const nom = document.getElementById('reg-nom');
@@ -130,7 +143,7 @@ document.getElementById('register-form')?.addEventListener('submit', function(e)
         return;
     }
 
-    const result = register(email.value, password.value, nom.value, prenom.value);
+    const result = await register(email.value, password.value, nom.value, prenom.value);
 
     if (result.success) {
         statusDiv.textContent = "Compte créé avec succès ! Redirection...";
@@ -139,7 +152,7 @@ document.getElementById('register-form')?.addEventListener('submit', function(e)
 
 
         const userToConnect = {
-            id: Date.now(), // On utilise le même ID que dans register()
+            id: Date.now(), // meme ID que dans register()
             email: email.value,
             nom: nom.value,
             prenom: prenom.value,
