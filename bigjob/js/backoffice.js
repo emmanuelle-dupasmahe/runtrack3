@@ -1,31 +1,31 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const user = JSON.parse(sessionStorage.getItem("currentUser"));
 
-    // 1. Sécurité : redirection si pas connecté ou pas autorisé
+    // redirection si pas connecté ou pas autorisé
     if (!user || (user.role !== 'admin' && user.role !== 'moderator')) {
         window.location.href = "calendar.html";
         return;
     }
 
-    // 2. Affichage des infos de base
+    // affichage des infos de base
     const userNameElem = document.getElementById('user-name');
     if (userNameElem) userNameElem.textContent = `${user.prenom} ${user.nom}`;
 
-    // 3. Charger et Afficher les demandes (Modo + Admin)
+    //charge et affiche les demandes (Modo + Admin)
     const modSection = document.getElementById("mod-section");
     if (modSection) {
         modSection.classList.remove('d-none');
         await displayRequests(); 
     }
 
-    // 4. Charger et Afficher les utilisateurs (Admin uniquement)
+    // charge et affiche les utilisateurs (Admin uniquement)
     const adminSection = document.getElementById("admin-section");
     if (user.role === 'admin' && adminSection) {
         adminSection.classList.remove('d-none');
         await renderUsers();
     }
 
-    // 5. Déconnexion
+    // déconnexion
     const logoutBtn = document.getElementById('logout-btn');
     if (logoutBtn) {
         logoutBtn.addEventListener('click', () => {

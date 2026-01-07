@@ -1,13 +1,13 @@
 async function loadRequests() {
-    // On récupère ce qui est en LocalStorage (les nouvelles demandes)
+    // on récupère ce qui est en LocalStorage (les nouvelles demandes)
     let localRequests = JSON.parse(localStorage.getItem("requests")) || [];
     
-    // Si le LocalStorage est vide (premier lancement), on peut charger le JSON
+    // si le LocalStorage est vide (premier lancement), on peut charger le JSON
     if (localRequests.length === 0) {
         try {
             const response = await fetch('requests.json');
             const defaultRequests = await response.json();
-            // On les enregistre en local pour pouvoir les manipuler (approuver/refuser)
+            // on les enregistre en local pour pouvoir les manipuler (approuver/refuser)
             localStorage.setItem("requests", JSON.stringify(defaultRequests));
             return defaultRequests;
         } catch (e) {
@@ -18,15 +18,15 @@ async function loadRequests() {
 }
 
 
-// Récupération de l'utilisateur connecté (Session)
+// récupération de l'utilisateur connecté (Session)
 const user = JSON.parse(sessionStorage.getItem("currentUser"));
 
-// Redirection si l'utilisateur n'est pas connecté
+// redirection si l'utilisateur n'est pas connecté
 if (!user) {
     window.location.href = "login.html";
 }
 
-// Fonctions utilitaires
+// fonctions utilitaires
 function isPastDate(dateString) {
     const date = new Date(dateString);
     const today = new Date();
@@ -38,7 +38,7 @@ function isModerator(user) {
     return user && (user.role === "moderator" || user.role === "admin");
 }
 
-// Fonction pour envoyer une demande
+// fonction pour envoyer une demande
 function requestPresence() {
     const datePicker = document.getElementById('date-picker');
     const date = datePicker.value;
@@ -53,10 +53,10 @@ function requestPresence() {
         return;
     }
 
-    // Récupération des demandes existantes dans le LocalStorage
+    // récupération des demandes existantes dans le LocalStorage
     const requests = JSON.parse(localStorage.getItem("requests")) || [];
     
-    // Ajout de la nouvelle demande
+    // ajout de la nouvelle demande
     requests.push({
         id: Date.now(),
         userId: user.id,
@@ -65,36 +65,36 @@ function requestPresence() {
         status: "pending"
     });
 
-    // Sauvegarde
+    // sauvegarde
     localStorage.setItem("requests", JSON.stringify(requests));
     alert("Demande envoyée avec succès !");
     
-    // On vide le champ date après l'envoi
+    // on vide le champ date après l'envoi
     datePicker.value = "";
 }
 
-// Initialisation de la page au chargement
+// initialisation de la page au chargement
 document.addEventListener('DOMContentLoaded', () => {
     
-    // Affichage du nom de l'utilisateur
+    // affichage du nom de l'utilisateur
     const nameDisplay = document.getElementById('user-name');
     if (nameDisplay) {
         nameDisplay.textContent = `${user.prenom} ${user.nom}`;
     }
 
-    // Affichage du lien Backoffice uniquement pour le Staff (Modo/Admin)
+    // affichage du lien Backoffice uniquement pour le Staff (Modo/Admin)
     const navBackoffice = document.getElementById('nav-backoffice');
     if (navBackoffice && isModerator(user)) {
         navBackoffice.classList.remove('d-none');
     }
 
-    // Empêcher la sélection de dates passées dans le calendrier HTML
+    // empêcher la sélection de dates passées dans le calendrier HTML
     const datePicker = document.getElementById('date-picker');
     if (datePicker) {
         datePicker.min = new Date().toISOString().split("T")[0];
     }
 
-    // Gestion du bouton Déconnexion
+    // gestion du bouton Déconnexion
     const logoutBtn = document.getElementById('logout-btn');
     if (logoutBtn) {
         logoutBtn.addEventListener('click', () => {
