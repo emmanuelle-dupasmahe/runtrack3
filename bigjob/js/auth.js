@@ -11,7 +11,7 @@ function isLaPlateformeEmail(email) {
 // connexion
 async function login(email, password) {
     try {
-        const response = await fetch('users.json');
+        const response = await fetch('data/users.json');
         const defaultUsers = await response.json();
         const localUsers = JSON.parse(localStorage.getItem("users")) || [];
         
@@ -82,7 +82,7 @@ document.getElementById('login-form')?.addEventListener('submit', async function
 async function register(email, password, nom, prenom) {
     try {
         // on nrécupère les utilisateurs du JSON
-        const response = await fetch('users.json');
+        const response = await fetch('data/users.json');
         const defaultUsers = await response.json();
 
         // 2on récupère les utilisateurs du LocalStorage

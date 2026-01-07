@@ -5,7 +5,7 @@ async function loadRequests() {
     // si le LocalStorage est vide (premier lancement), on peut charger le JSON
     if (localRequests.length === 0) {
         try {
-            const response = await fetch('requests.json');
+            const response = await fetch('data/requests.json');
             const defaultRequests = await response.json();
             // on les enregistre en local pour pouvoir les manipuler (approuver/refuser)
             localStorage.setItem("requests", JSON.stringify(defaultRequests));

@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // déconnexion
+
     const logoutBtn = document.getElementById('logout-btn');
     if (logoutBtn) {
         logoutBtn.addEventListener('click', () => {
@@ -46,7 +47,7 @@ async function initRequests() {
 
     if (!jsonImported) {
         try {
-            const response = await fetch('requests.json');
+            const response = await fetch('data/requests.json');
             if (response.ok) {
                 const jsonRequests = await response.json();
                 
