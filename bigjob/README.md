@@ -1,6 +1,6 @@
 📄 Documentation Technique : Système de Présence La Plateforme_
 📖 Présentation
-Ce projet est une application web Front-end permettant aux étudiants de La Plateforme_ de réserver leur présence dans les locaux. Il intègre un système d'authentification, une gestion de rôles et un backoffice de modération.
+Ce projet est une application web de gestion des accès aux locaux, permettant aux étudiants de réserver leurs journées et à l'administration de valider ces demandes.
 
 🛠️ Technologies utilisées
 HTML5 / CSS3 (Design personnalisé avec dégradés).
@@ -12,33 +12,64 @@ JavaScript (ES6) (Logique métier et manipulation du DOM).
 JSON & LocalStorage (Stockage et gestion des données).
 
 📂 Structure du Projet
-Plaintext
 
-/mon-projet
+bigjob/
+├── index.html          
+├── login.html          
+├── register.html       
+├── calendar.html       
+├── backoffice.html     
 ├── assets/
-│   └── images/
-│       └── logo_plateforme.png  # Logo officiel de l'école
+│   └── css/style.css   
 ├── js/
-│   ├── auth.js                  # Inscription et Connexion
-│   └── dashboard.js             # Logique Calendrier et Backoffice
-├── users.json                   # Base de données utilisateurs par défaut
-├── login.html                   # Page de connexion (Design Premium)
-├── register.html                # Page d'inscription (Design Premium)
-└── dashboard.html               # Interface utilisateur dynamique
-🚀 Installation et Test
-Téléchargez l'intégralité des fichiers en conservant la structure des dossiers.
+│   ├── auth.js         # Gère Login/Register
+│   ├── calendar.js     # Gère l'envoi des demandes (LocalStorage)
+│   └── backoffice.js   # Gère la validation (LocalStorage) et les Users
+└── data/
+    └── users.json      # Comptes par défaut
+    └── requests.json   # Comptes par défaut
 
-Ouvrez le fichier login.html dans un navigateur web.
 
-Pour tester les différents rôles :
+🛠️ Fonctionnalités
+👤 Utilisateurs (Étudiants)
+Inscription & Connexion : Accès sécurisé via une adresse @laplateforme.io.
 
-Étudiant : Connectez-vous avec un compte créé via register.html.
+Calendrier de présence : Sélection d'une date et envoi d'une demande d'accès.
 
-Administrateur : Utilisez le compte admin@laplateforme.io défini dans votre fichier users.json.
+Sécurité : Impossible de réserver une date passée.
 
-💡 Points clés de l'interface
-Design Harmonisé : Utilisation d'une barre de navigation blanche (bg-white) sur le dashboard pour mettre en valeur le logo original.
+🛡️ Staff (Modérateurs)
+Validation : Accès à une interface de modération pour approuver ou refuser les demandes de présence en temps réel.
 
-Validation de Domaine : Seules les adresses @laplateforme.io sont acceptées.
+🔑 Administrateur
+Gestion complète : Accès au Backoffice pour gérer les comptes utilisateurs.
 
-Sécurité : Protection des pages par vérification de la session active.
+Droits d'accès : Possibilité de promouvoir un utilisateur au rang de modérateur ou de supprimer un compte local.
+
+💾 Gestion des Données
+Pour répondre aux contraintes techniques tout en offrant une expérience interactive :
+
+Fichier JSON (users.json) : Sert de base de données initiale pour les comptes "système".
+
+LocalStorage : Utilisé pour stocker les nouveaux inscrits et les demandes de présence (requests), permettant de simuler une base de données dynamique sans serveur backend.
+
+SessionStorage : Utilisé pour maintenir la session de l'utilisateur connecté (currentUser) et sécuriser l'accès aux pages.
+
+🔧 Installation
+Clonez ou téléchargez le dossier bigjob/.
+
+Ouvrez le fichier index.html dans votre navigateur (via un serveur local comme Live Server sur VS Code pour une gestion optimale des fichiers JSON).
+
+Comptes de test (JSON) :
+
+Admin : admin@laplateforme.io / admin
+
+Modo : modo@laplateforme.io / modo
+
+🎨 Choix Design
+
+Utilisation d'un dégradé de fond avec le bleu de la plateforme
+
+Design Mobile First avec Bootstrap 5.
+
+Interface intuitive avec une barre de navigation dynamique qui s'adapte au rôle de l'utilisateur.

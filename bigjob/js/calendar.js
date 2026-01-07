@@ -1,3 +1,23 @@
+async function loadRequests() {
+    // On récupère ce qui est en LocalStorage (les nouvelles demandes)
+    let localRequests = JSON.parse(localStorage.getItem("requests")) || [];
+    
+    // Si le LocalStorage est vide (premier lancement), on peut charger le JSON
+    if (localRequests.length === 0) {
+        try {
+            const response = await fetch('requests.json');
+            const defaultRequests = await response.json();
+            // On les enregistre en local pour pouvoir les manipuler (approuver/refuser)
+            localStorage.setItem("requests", JSON.stringify(defaultRequests));
+            return defaultRequests;
+        } catch (e) {
+            return [];
+        }
+    }
+     return localRequests;
+}
+
+
 // Récupération de l'utilisateur connecté (Session)
 const user = JSON.parse(sessionStorage.getItem("currentUser"));
 
@@ -40,7 +60,7 @@ function requestPresence() {
     requests.push({
         id: Date.now(),
         userId: user.id,
-        userNom: `${user.prenom} ${user.nom}`,
+        userName: `${user.prenom} ${user.nom}`,
         date: date,
         status: "pending"
     });
@@ -62,13 +82,13 @@ document.addEventListener('DOMContentLoaded', () => {
         nameDisplay.textContent = `${user.prenom} ${user.nom}`;
     }
 
-    // Affichage du lien Backoffice uniquement pour Staff (Modo/Admin)
+    // Affichage du lien Backoffice uniquement pour le Staff (Modo/Admin)
     const navBackoffice = document.getElementById('nav-backoffice');
     if (navBackoffice && isModerator(user)) {
         navBackoffice.classList.remove('d-none');
     }
 
-    // Sécurité : Empêcher la sélection de dates passées dans le calendrier HTML
+    // Empêcher la sélection de dates passées dans le calendrier HTML
     const datePicker = document.getElementById('date-picker');
     if (datePicker) {
         datePicker.min = new Date().toISOString().split("T")[0];

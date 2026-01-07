@@ -34,6 +34,8 @@ async function login(email, password) {
 document.getElementById('login-form')?.addEventListener('submit', async function(e) {
     e.preventDefault();
     
+    this.classList.add('was-validated');
+
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
     const errorDiv = document.getElementById('error-message');
@@ -43,7 +45,7 @@ document.getElementById('login-form')?.addEventListener('submit', async function
     emailInput.classList.remove('is-invalid');
     passwordInput.classList.remove('is-invalid');
 
-    const email = emailInput.value;
+    const email = emailInput.value.trim();
     const password = passwordInput.value;
 
     // Validation visuelle des champs vides ou mauvais format
@@ -66,8 +68,10 @@ document.getElementById('login-form')?.addEventListener('submit', async function
         window.location.href = "calendar.html";
     } else {
         // Erreur d'identifiants
+        this.classList.remove('was-validated');
         errorDiv.textContent = result.message;
         errorDiv.classList.remove('d-none');
+
         emailInput.classList.add('is-invalid');
         passwordInput.classList.add('is-invalid');
     }
@@ -132,8 +136,17 @@ document.getElementById('register-form')?.addEventListener('submit', function(e)
         statusDiv.textContent = "Compte créé avec succès ! Redirection...";
         statusDiv.classList.add('alert-success');
         statusDiv.classList.remove('d-none');
-        
-        // Petite pause pour laisser l'utilisateur lire le succès avant de rediriger
+
+
+        const userToConnect = {
+            id: Date.now(), // On utilise le même ID que dans register()
+            email: email.value,
+            nom: nom.value,
+            prenom: prenom.value,
+            role: "user"
+        };
+        sessionStorage.setItem("currentUser", JSON.stringify(userToConnect));
+        //petit temps pour passer au calendrier
         setTimeout(() => {
             window.location.href = "calendar.html";
         }, 2000);
