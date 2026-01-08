@@ -42,7 +42,7 @@
 /*quand il sort, il descend et grossit */
 .bird-out {
     
-    transform: translateY(120px) scale(2); 
+    transform: translateY(100px) scale(2); 
 }
 
 /*pour le chronomètre*/
