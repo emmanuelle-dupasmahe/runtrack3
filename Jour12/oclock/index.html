@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Fraunces', serif; }
+        .wood-texture { background-color: #451a03; background-image: radial-gradient(#78350f 1px, transparent 0); background-size: 20px 20px; }
+    </style>
+</head>
+<body class="bg-stone-200 min-h-screen flex flex-col items-center p-8">
+
+    <div class="w-full max-w-2xl bg-amber-900 border-8 border-amber-950 rounded-t-full shadow-2xl overflow-hidden">
+        
+        <nav class="flex justify-around bg-amber-950 p-4 border-b-4 border-amber-800">
+            <button class="hover:text-amber-400 transition" onclick="switchTab('clock')">🕒 Horloge</button>
+            <button class="hover:text-amber-400 transition" onclick="switchTab('timer')">⏳ Minuteur</button>
+            <button class="hover:text-amber-400 transition" onclick="switchTab('chrono')">⏱️ Chrono</button>
+            <button class="hover:text-amber-400 transition" onclick="switchTab('alarm')">🔔 Réveil</button>
+        </nav>
+
+        <main id="display-area" class="p-10 text-center text-amber-100 min-h-[300px]">
+            <h1 class="text-4xl">Bonjour !</h1>
+            <p class="mt-4">Sélectionnez un outil pour commencer.</p>
+        </main>
+    </div>
+
+</body>
+</html>
