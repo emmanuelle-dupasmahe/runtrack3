@@ -53,3 +53,20 @@
     background: #78350f;
     border-radius: 10px;
 }
+/*pour simuler l'ouverture des portes en verre*/
+/* On ajoute la perspective sur les portes elles-mêmes pour que la rotation soit visible */
+#door-left, #door-right {
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* La porte gauche pivote */
+.door-left-open {
+    transform: perspective(1000px) rotateY(-120deg) !important;
+}
+
+/* La porte droite pivote */
+.door-right-open {
+    transform: perspective(1000px) rotateY(120deg) !important;
+}

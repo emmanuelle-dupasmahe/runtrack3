@@ -80,16 +80,21 @@ function afficherTemps(secondes) {
 }
 function triggerBirdAlert(message) {
     const bird = document.getElementById('coucou-bird');
+    const doorL = document.getElementById('door-left');
+    const doorR = document.getElementById('door-right');
     const sound = document.getElementById('coucou-sound');
     
-    
-    // on change l'oiseau en coq pour simuler le chant du coq
+    doorL.classList.add('door-left-open');
+    doorR.classList.add('door-right-open');
+
+    setTimeout(() => {
     bird.textContent = "🐥"; 
+    bird.classList.add('bird-out');
 
     // la descente lente
-    setTimeout(() => {
-        bird.classList.add('bird-out'); 
-    }, 40);
+   // setTimeout(() => {
+     //  bird.classList.add('bird-out'); 
+    //}, 40);
 
     //pour que le son coucou joue et se répète
     if (sound) {
@@ -117,6 +122,7 @@ function triggerBirdAlert(message) {
         // On lance l'intervalle pour les suivants
         const intervalSon = setInterval(playCoucou, 1200);
     }
+    },400);
 
     // alerte temps ecoulé
     const alertDiv = document.createElement('div');
@@ -131,11 +137,12 @@ function triggerBirdAlert(message) {
     setTimeout(() => {
         bird.classList.remove('bird-out');
         
-        // le coq remonte et on remet l'oiseau de départ
         setTimeout(() => {
             bird.textContent = "🐣";
+            doorL.classList.remove('door-left-open');
+            doorR.classList.remove('door-right-open');
         }, 1500);
 
         alertDiv.remove();
-    }, 5000);
+    }, 6000);
 }
