@@ -13,11 +13,13 @@
 .animate-pendule {
             animation: ping-pong 2s infinite ease-in-out;
         }
-.bird-out {
-    transform: translateY(-100%); /* Fait sortir l'oiseau vers le haut */
-    transition: transform 0.3s ease-in-out;
+/* oiseau caché par défaut dans sa boîte */
+#coucou-bird {
+    display: inline-block;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
 }
-.bird-in {
-    transform: translateY(0); /* Fait rentrer l'oiseau */
-    transition: transform 0.3s ease-in-out;
+
+/*quand il sort, il monte et grossit */
+.bird-out {
+    transform: translateY(-50px) scale(1.5); 
 }

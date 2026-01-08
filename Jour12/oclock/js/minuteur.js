@@ -2,7 +2,7 @@ let intervalId;
 let tempsRestant = 0;
 
 function renderTimer() {
-    // On nettoie l'ancien intervalle si on change d'onglet
+    // ancien intervalle nettoyé si on change d'onglet
     clearInterval(intervalId);
     
     const mainContent = document.getElementById('main-content');
@@ -36,7 +36,7 @@ function adjustTimer(amount) {
     const input = document.getElementById('timer-input');
     let value = parseInt(input.value) || 0;
     input.value = Math.max(0, value + amount);
-    // On met à jour l'affichage immédiatement
+   
     tempsRestant = parseInt(input.value);
     afficherTemps(tempsRestant);
 }
@@ -81,19 +81,19 @@ function afficherTemps(secondes) {
 function triggerBirdAlert(message) {
     const bird = document.getElementById('coucou-bird');
     
-    // L'oiseau sort (on ajoute la classe d'animation)
+    // l'oiseau sort
     bird.classList.add('bird-out'); 
     
-    // On peut aussi changer l'émoji pour qu'il ait l'air de crier
-    bird.textContent = "🔊"; 
+    //  emoji d'un coq 
+    bird.textContent = "🐓"; 
 
-    // Alerte visuelle (pas une popup)
+    // Alerte visuelle 
     const alertDiv = document.createElement('div');
     alertDiv.className = "absolute top-40 bg-white text-red-700 px-6 py-3 rounded-full shadow-2xl font-bold border-4 border-red-700 animate-bounce z-50";
     alertDiv.innerText = message;
     document.body.appendChild(alertDiv);
 
-    // On remet tout en place après 5 secondes
+    // tout est remis en place après 5 secondes
     setTimeout(() => {
         bird.classList.remove('bird-out');
         bird.textContent = "🐦";
