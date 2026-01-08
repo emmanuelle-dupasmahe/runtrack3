@@ -81,11 +81,12 @@ function afficherTemps(secondes) {
 function triggerBirdAlert(message) {
     const bird = document.getElementById('coucou-bird');
     
-    // l'oiseau sort
-    bird.classList.add('bird-out'); 
-    
     //  emoji d'un coq 
     bird.textContent = "🐓"; 
+
+    setTimeout(() => {
+        bird.classList.add('bird-out'); 
+    }, 10);
 
     // Alerte visuelle 
     const alertDiv = document.createElement('div');

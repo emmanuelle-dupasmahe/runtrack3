@@ -13,13 +13,20 @@
 .animate-pendule {
             animation: ping-pong 2s infinite ease-in-out;
         }
-/* oiseau caché par défaut dans sa boîte */
+
+/*animation de l'oiseau*/
+
+/*oiseau dans sa boite par défaut*/
 #coucou-bird {
     display: inline-block;
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    /* On passe à 1.5s pour que ce soit bien "doux" */
+    transition: all 1.5s ease-in-out; 
+    position: relative;
+    z-index: 50; /* Pour passer devant tout le monde */
 }
 
-/*quand il sort, il monte et grossit */
+/*quand il sort, il descend et grossit */
 .bird-out {
-    transform: translateY(-50px) scale(1.5); 
+    
+    transform: translateY(120px) scale(2); 
 }
