@@ -30,3 +30,12 @@
     
     transform: translateY(120px) scale(2); 
 }
+
+/*ppour le chronomètre*/
+.custom-scrollbar::-webkit-scrollbar {
+    width: 5px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #78350f;
+    border-radius: 10px;
+}
