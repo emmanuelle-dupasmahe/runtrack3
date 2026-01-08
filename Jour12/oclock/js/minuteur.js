@@ -133,7 +133,7 @@ function triggerBirdAlert(message) {
         
         // le coq remonte et on remet l'oiseau de départ
         setTimeout(() => {
-            bird.textContent = "🐤";
+            bird.textContent = "🐣";
         }, 1500);
 
         alertDiv.remove();
