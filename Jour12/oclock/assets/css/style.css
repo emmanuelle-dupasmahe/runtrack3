@@ -1,0 +1,23 @@
+ body { 
+    font-family: 'Fraunces', serif;
+ }
+        .wood-texture {
+             background-color: #451a03; background-image: radial-gradient(#78350f 1px, transparent 0); background-size: 20px 20px; 
+            }
+
+@keyframes ping-pong {
+    0% { transform: rotate(15deg); }
+    50% { transform: rotate(-15deg); }
+    100% { transform: rotate(15deg); }
+}
+.animate-pendule {
+            animation: ping-pong 2s infinite ease-in-out;
+        }
+.bird-out {
+    transform: translateY(-100%); /* Fait sortir l'oiseau vers le haut */
+    transition: transform 0.3s ease-in-out;
+}
+.bird-in {
+    transform: translateY(0); /* Fait rentrer l'oiseau */
+    transition: transform 0.3s ease-in-out;
+}
