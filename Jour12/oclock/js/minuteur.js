@@ -81,23 +81,32 @@ function afficherTemps(secondes) {
 function triggerBirdAlert(message) {
     const bird = document.getElementById('coucou-bird');
     
-    //  emoji d'un coq 
+    // on change l'oiseau en coq pour simuler le champs du coq
     bird.textContent = "🐓"; 
 
+    // la descente lente
     setTimeout(() => {
         bird.classList.add('bird-out'); 
-    }, 10);
+    }, 40);
 
-    // Alerte visuelle 
+    // alerte temps ecoulé
     const alertDiv = document.createElement('div');
-    alertDiv.className = "absolute top-40 bg-white text-red-700 px-6 py-3 rounded-full shadow-2xl font-bold border-4 border-red-700 animate-bounce z-50";
+    alertDiv.className = "absolute bottom-10 bg-white text-red-700 px-8 py-4 rounded-full shadow-2xl font-bold border-4 border-red-700 animate-bounce z-50 text-xl";
     alertDiv.innerText = message;
-    document.body.appendChild(alertDiv);
+    
+    
+    const container = document.querySelector('.relative'); 
+    container.appendChild(alertDiv);
 
-    // tout est remis en place après 5 secondes
+    // après 5 secondes tout est remis en place
     setTimeout(() => {
         bird.classList.remove('bird-out');
-        bird.textContent = "🐦";
+        
+        // le coq remonte et on remet l'oiseau de départ
+        setTimeout(() => {
+            bird.textContent = "🐦";
+        }, 1500);
+
         alertDiv.remove();
     }, 5000);
 }
