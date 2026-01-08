@@ -64,24 +64,36 @@ function calculerCountdown(heureCible) {
     const now = new Date();
     const [h, m] = heureCible.split(':');
     let cible = new Date();
-    cible.setHours(h, m, 0);
+    cible.setHours(h, m, 0, 0);
 
-    // Si l'heure est déjà passée aujourd'hui, on considère que c'est pour demain
+    // si l'heure est déjà passée
     if (cible < now) {
         return "passée";
     }
 
     const diffMs = cible - now;
-    const diffMins = Math.floor(diffMs / 60000);
+    const diffSecs = Math.floor(diffMs / 1000);
+    const diffMins = Math.floor(diffSecs / 60);
     const diffHeures = Math.floor(diffMins / 60);
-    const minsRestantes = diffMins % 60;
 
+    // plus d'une heure restante
     if (diffHeures > 0) {
-        return `dans ${diffHeures}h ${minsRestantes}min`;
+        return `dans ${diffHeures}h ${diffMins % 60}min`;
     }
-    return `dans ${minsRestantes} min`;
-}
+    
+    // entre 2 et 59 minutes
+    if (diffMins >= 2) {
+        return `dans ${diffMins} min`;
+    }
 
+    // s'il reste moins de 2 minutes 
+    const secsRestantes = diffSecs % 120; // total des secondes
+    if (diffSecs > 60) {
+        return `dans 1min ${diffSecs - 60}s`;
+    } else {
+        return `dans ${diffSecs}s`; // Le compte à rebours
+    }
+}
 function afficherAlarmes() {
     const liste = document.getElementById('listeAlarmes');
     if (!liste) return;

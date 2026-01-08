@@ -80,14 +80,43 @@ function afficherTemps(secondes) {
 }
 function triggerBirdAlert(message) {
     const bird = document.getElementById('coucou-bird');
+    const sound = document.getElementById('coucou-sound');
     
-    // on change l'oiseau en coq pour simuler le champs du coq
-    bird.textContent = "🐓"; 
+    
+    // on change l'oiseau en coq pour simuler le chant du coq
+    bird.textContent = "🐥"; 
 
     // la descente lente
     setTimeout(() => {
         bird.classList.add('bird-out'); 
     }, 40);
+
+    //pour que le son coucou joue et se répète
+    if (sound) {
+        sound.pause(); // On stoppe toute lecture en cours
+        sound.currentTime = 0; // On remet à zéro
+        
+        let repetitions = 0;
+
+        // fonction pour jouer le son 
+        const playCoucou = () => {
+            if (repetitions < 2) {
+                // On clone le nœud audio pour éviter que les sons se chevauchent ou se coupent
+                // C'est l'astuce ultime pour un son fluide !
+                const soundClone = sound.cloneNode();
+                soundClone.play().catch(e => console.log("Erreur lecture"));
+                repetitions++;
+            } else {
+                clearInterval(intervalSon);
+            }
+        };
+
+        // On lance le premier cri
+        playCoucou();
+
+        // On lance l'intervalle pour les suivants
+        const intervalSon = setInterval(playCoucou, 1200);
+    }
 
     // alerte temps ecoulé
     const alertDiv = document.createElement('div');
@@ -104,7 +133,7 @@ function triggerBirdAlert(message) {
         
         // le coq remonte et on remet l'oiseau de départ
         setTimeout(() => {
-            bird.textContent = "🐦";
+            bird.textContent = "🐤";
         }, 1500);
 
         alertDiv.remove();
