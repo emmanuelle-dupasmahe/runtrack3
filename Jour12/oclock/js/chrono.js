@@ -3,7 +3,7 @@ let tempsEcoule = 0; // en centièmes de seconde pour plus de précision
 let tours = [];
 
 function renderChrono() {
-    // On arrête l'horloge ou le minuteur si on arrive sur cet onglet
+    // on arrête l'horloge ou le minuteur si on arrive sur cet onglet
     if (typeof clockInterval !== 'undefined') clearInterval(clockInterval);
     if (typeof intervalId !== 'undefined') clearInterval(intervalId);
 
@@ -28,7 +28,7 @@ function renderChrono() {
             </div>
         </div>
     `;
-    // On réaffiche les tours si on revient sur l'onglet
+    // on réaffiche les tours si on revient sur l'onglet
     afficherTours();
     formaterChrono(tempsEcoule);
 }
@@ -44,7 +44,7 @@ function toggleChrono() {
         btn.textContent = "Arrêter";
         btn.classList.replace("bg-green-800", "bg-red-800");
         chronoInterval = setInterval(() => {
-            tempsEcoule += 10; // On avance de 10ms
+            tempsEcoule += 10; // 10ms
             formaterChrono(tempsEcoule);
         }, 10);
     }
@@ -58,13 +58,13 @@ function formaterChrono(ms) {
     const text = `${String(minutes).padStart(2, '0')}:${String(secondes).padStart(2, '0')}:${String(centiemes).padStart(2, '0')}`;
     const el = document.getElementById("affichageChrono");
     if (el) el.textContent = text;
-    return text; // Utile pour enregistrer le tour
+    return text; // pour enregistrer le tour
 }
 
 function enregistrerTour() {
     if (tempsEcoule === 0) return;
     const tempsActuel = formaterChrono(tempsEcoule);
-    tours.unshift(tempsActuel); // Ajoute le tour au début de la liste
+    tours.unshift(tempsActuel); // pour ajouter le tour au début de la liste
     afficherTours();
 }
 

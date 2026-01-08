@@ -1,10 +1,24 @@
  body { 
     font-family: 'Fraunces', serif;
  }
-        .wood-texture {
+    .wood-texture {
              background-color: #451a03; background-image: radial-gradient(#78350f 1px, transparent 0); background-size: 20px 20px; 
             }
 
+    .bg-wood-planks {
+    /* Couleur de base du bois */
+    background-color: #5d2e1a;
+    /* Création des lattes verticales */
+    background-image: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 38px,
+        rgba(0, 0, 0, 0.3) 38px,
+        rgba(0, 0, 0, 0.3) 40px
+    );
+    /* Ajout d'un grain de bois léger par-dessus */
+    background-blend-mode: multiply;
+}
 @keyframes ping-pong {
     0% { transform: rotate(15deg); }
     50% { transform: rotate(-15deg); }
@@ -19,10 +33,10 @@
 /*oiseau dans sa boite par défaut*/
 #coucou-bird {
     display: inline-block;
-    /* On passe à 1.5s pour que ce soit bien "doux" */
+    
     transition: all 1.5s ease-in-out; 
     position: relative;
-    z-index: 50; /* Pour passer devant tout le monde */
+    z-index: 50; 
 }
 
 /*quand il sort, il descend et grossit */
@@ -31,7 +45,7 @@
     transform: translateY(120px) scale(2); 
 }
 
-/*ppour le chronomètre*/
+/*pour le chronomètre*/
 .custom-scrollbar::-webkit-scrollbar {
     width: 5px;
 }

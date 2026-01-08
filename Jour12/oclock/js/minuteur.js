@@ -91,7 +91,7 @@ function triggerBirdAlert(message) {
 
     // alerte temps ecoulé
     const alertDiv = document.createElement('div');
-    alertDiv.className = "absolute bottom-50% bg-white text-red-700 px-8 py-4 rounded-full shadow-2xl font-bold border-4 border-red-700 animate-bounce z-50 text-xl";
+    alertDiv.className = "absolute bottom-80% bg-white text-red-700 px-8 py-4 rounded-full shadow-2xl font-bold border-4 border-red-700 animate-bounce z-50 text-xl";
     alertDiv.innerText = message;
     
     
