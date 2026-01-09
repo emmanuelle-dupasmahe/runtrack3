@@ -1,11 +1,11 @@
  body { 
     font-family: 'Fraunces', serif;
  }
-    .wood-texture {
+.wood-texture {
              background-color: #451a03; background-image: radial-gradient(#78350f 1px, transparent 0); background-size: 20px 20px; 
-            }
+}
 
-    .bg-wood-planks {
+.bg-wood-planks {
     /* Couleur de base du bois */
     background-color: #5d2e1a;
     /* Création des lattes verticales */
@@ -19,6 +19,8 @@
     /* Ajout d'un grain de bois léger par-dessus */
     background-blend-mode: multiply;
 }
+
+/*pour le balancier*/
 @keyframes ping-pong {
     0% { transform: rotate(15deg); }
     50% { transform: rotate(-15deg); }
@@ -27,6 +29,7 @@
 .animate-pendule {
             animation: ping-pong 2s infinite ease-in-out;
         }
+
 
 /*animation de l'oiseau*/
 
@@ -52,7 +55,7 @@
 .custom-scrollbar::-webkit-scrollbar-thumb {
     background: #78350f;
     border-radius: 10px;
-}:
+}
 
 /*pour simuler l'ouverture des portes en verre*/
 #door-left, #door-right {

@@ -19,7 +19,7 @@ function renderChrono() {
             <div class="flex gap-4">
                 <button id="btnToggle" onclick="toggleChrono()" class="bg-green-900 hover:bg-green-800 text-white px-6 py-2 rounded-full font-bold shadow-lg transition">Démarrer</button>
                 <button onclick="enregistrerTour()" class="bg-amber-800 hover:bg-amber-700 text-white px-6 py-2 rounded-full font-bold shadow-lg transition">Tour</button>
-                <button onclick="resetChrono()" class="bg-gray-800 hover:bg-gray-700 text-white px-6 py-2 rounded-full font-bold shadow-lg transition">Reset</button>
+                <button onclick="resetChrono()" class="bg-lime-800 hover:bg-lime-700 text-white px-6 py-2 rounded-full font-bold shadow-lg transition">Reset</button>
             </div>
 
             <div class="w-full max-w-[300px] mt-4 max-h-[150px] overflow-y-auto custom-scrollbar">
