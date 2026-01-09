@@ -80,6 +80,7 @@ function afficherTemps(secondes) {
 }
 function triggerBirdAlert(message) {
     const bird = document.getElementById('coucou-bird');
+    const spring = document.getElementById('bird-spring');
     const doorL = document.getElementById('door-left');
     const doorR = document.getElementById('door-right');
     const sound = document.getElementById('coucou-sound');
@@ -89,24 +90,21 @@ function triggerBirdAlert(message) {
 
     setTimeout(() => {
     bird.textContent = "🐥"; 
-    bird.classList.add('bird-out');
+    bird.classList.add('bird-out'); //l'oiseau sort
+    spring.classList.add('spring-out'); //le ressort s'étire
 
-    // la descente lente
-   // setTimeout(() => {
-     //  bird.classList.add('bird-out'); 
-    //}, 40);
 
     //pour que le son coucou joue et se répète
     if (sound) {
-        sound.pause(); // On stoppe toute lecture en cours
-        sound.currentTime = 0; // On remet à zéro
+        sound.pause(); // on stoppe toute lecture en cours
+        sound.currentTime = 0; // on remet à zéro
         
         let repetitions = 0;
 
         // fonction pour jouer le son 
         const playCoucou = () => {
             if (repetitions < 2) {
-                // On clone le nœud audio pour éviter que les sons se chevauchent ou se coupent
+            // explication temps de téléchargement est supérieur du son est > à l'affichage donc l'IA : On clone le nœud audio pour éviter que les sons se chevauchent ou se coupent
                 // C'est l'astuce ultime pour un son fluide !
                 const soundClone = sound.cloneNode();
                 soundClone.play().catch(e => console.log("Erreur lecture"));
@@ -135,7 +133,8 @@ function triggerBirdAlert(message) {
 
     // après 5 secondes tout est remis en place
     setTimeout(() => {
-        bird.classList.remove('bird-out');
+        bird.classList.remove('bird-out');//l'oiseau rentre
+        spring.classList.remove('spring-out'); //le ressort aussi
         
         setTimeout(() => {
             bird.textContent = "🐣";
