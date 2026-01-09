@@ -26,7 +26,7 @@ Une application web interactive d'horloge suisse de type "Coucou", construite av
 - Minuteur : Réglage précis avec flèches de contrôle et décompte.
 - Chronomètre : Précision au centième de seconde avec enregistrement des tours.
 - Réveil : Gestion de plusieurs alarmes avec messages personnalisés et calcul du temps restant (secondes/minutes/heures).
-- Animation Coucou : le coucou🐣sort de sa coquille 🐥en s'avançant et chante 3 fois lors des alertes".
+- Animation Coucou : wwodstock sort en s'avançant, vibre et chante 3 fois lors des alertes".
 
 🎨 Design
 - Habillage en lattes de bois avec texture générée en CSS.
