@@ -99,8 +99,8 @@ function triggerBirdAlert(message) {
     if (sound) {
         sound.pause(); // on stoppe toute lecture en cours
         sound.currentTime = 0; // on remet à zéro
-        
         let repetitions = 0;
+        let intervalSon;
 
         // fonction pour jouer le son 
         const playCoucou = () => {
@@ -108,18 +108,27 @@ function triggerBirdAlert(message) {
             // explication temps de téléchargement est supérieur du son est > à l'affichage donc l'IA : On clone le nœud audio pour éviter que les sons se chevauchent ou se coupent
                 // C'est l'astuce ultime pour un son fluide !
                 const soundClone = sound.cloneNode();
+
+                bird.classList.add('shake-active');//wwodstock bouge
+
                 soundClone.play().catch(e => console.log("Erreur lecture"));
                 repetitions++;
+                
+                setTimeout(() => {
+                bird.classList.remove('shake-active');
+            }, 800);
+
             } else {
                 clearInterval(intervalSon);
             }
         };
 
         // On lance le premier cri
-        playCoucou();
-
         // On lance l'intervalle pour les suivants
-        const intervalSon = setInterval(playCoucou, 1200);
+        setTimeout(() => {
+        playCoucou();
+        intervalSon = setInterval(playCoucou, 1200);
+    },1500);
     }
     },400);
 
