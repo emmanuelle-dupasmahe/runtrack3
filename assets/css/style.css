@@ -112,3 +112,30 @@
 }
 
 /*responsive*/
+/* Empêcher le débordement horizontal global */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* Ajustements pour Mobile et Edge */
+@media (max-width: 640px) {
+    body {
+        padding: 1rem !important;
+    }
+
+    /* On échappe les crochets de Tailwind pour que le CSS les comprenne */
+    .w-full.max-w-\[600px\] {
+        transform: scale(0.8); /* On réduit un peu plus pour être sûr que ça rentre */
+        transform-origin: top center;
+        margin-bottom: -100px; /* On remonte le vide créé par le scale */
+    }
+
+    h1 {
+        font-size: 2.2rem !important; /* On réduit le titre Coucouclock */
+    }
+
+    nav span.text-3xl {
+        font-size: 1.4rem !important; /* On réduit les icônes du menu */
+    }
+}
