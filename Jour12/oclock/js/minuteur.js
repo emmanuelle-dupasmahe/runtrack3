@@ -123,13 +123,15 @@ function triggerBirdAlert(message) {
     },400);
 
     // alerte temps ecoulé
+
     const alertDiv = document.createElement('div');
-    alertDiv.className = "absolute bottom-80% bg-white text-red-700 px-8 py-4 rounded-full shadow-2xl font-bold border-4 border-red-700 animate-bounce z-50 text-xl";
-    alertDiv.innerText = message;
+    alertDiv.className = "absolute top-[52%] left-1/2 -translate-x-1/2 bg-white text-green-900 px-8 py-4 rounded-full shadow-2xl font-bold border-4 border-green-900 animate-bounce z-50 text-xl whitespace-nowrap shadow-[0_0_20px_rgba(255,255,255,0.5)]";
     
+    alertDiv.innerText = message;
     
     const container = document.querySelector('.relative'); 
     container.appendChild(alertDiv);
+
 
     // après 5 secondes tout est remis en place
     setTimeout(() => {
