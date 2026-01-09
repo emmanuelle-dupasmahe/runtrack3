@@ -52,9 +52,9 @@
 .custom-scrollbar::-webkit-scrollbar-thumb {
     background: #78350f;
     border-radius: 10px;
-}
+}:
+
 /*pour simuler l'ouverture des portes en verre*/
-/* On ajoute la perspective sur les portes elles-mêmes pour que la rotation soit visible */
 #door-left, #door-right {
     backface-visibility: hidden;
     transform-style: preserve-3d;

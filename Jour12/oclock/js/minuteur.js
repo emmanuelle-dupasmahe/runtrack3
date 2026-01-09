@@ -25,8 +25,8 @@ function renderTimer() {
             </div>
 
             <div class="flex gap-4">
-                <button onclick="demarrerMinuteur()" class="bg-green-800 hover:bg-green-700 text-white px-8 py-3 rounded-full font-bold shadow-lg transition transform active:scale-95">Démarrer</button>
-                <button onclick="arreterMinuteur()" class="bg-red-800 hover:bg-red-700 text-white px-8 py-3 rounded-full font-bold shadow-lg transition transform active:scale-95">Stopper</button>
+                <button onclick="demarrerMinuteur()" class="bg-green-900 hover:bg-green-800 text-white px-8 py-3 rounded-full font-bold shadow-lg transition transform active:scale-95">Démarrer</button>
+                <button onclick="arreterMinuteur()" class="bg-red-900 hover:bg-red-800 text-white px-8 py-3 rounded-full font-bold shadow-lg transition transform active:scale-95">Stopper</button>
             </div>
         </div>
     `;
@@ -42,7 +42,7 @@ function adjustTimer(amount) {
 }
 
 function demarrerMinuteur() {
-    // Si l'input a une valeur, on l'utilise, sinon on garde le tempsRestant actuel
+   
     const inputVal = parseInt(document.getElementById('timer-input').value);
     if (inputVal > 0 && tempsRestant === 0) {
         tempsRestant = inputVal;
@@ -50,7 +50,7 @@ function demarrerMinuteur() {
 
     if (tempsRestant <= 0) return; // Ne rien faire si 0
 
-    // On évite de lancer plusieurs intervalles en même temps
+    // on évite de lancer plusieurs intervalles en même temps
     clearInterval(intervalId);
 
     intervalId = setInterval(function() {
@@ -72,7 +72,7 @@ function afficherTemps(secondes) {
     const minutes = Math.floor(secondes / 60);
     const secs = secondes % 60;
     
-    // Version simplifiée de ton formatNumber avec padStart
+    
     const affichage = String(minutes).padStart(2, '0') + ":" + String(secs).padStart(2, '0');
     
     const element = document.getElementById("affichageMinuteur");
@@ -122,7 +122,7 @@ function triggerBirdAlert(message) {
     }
     },400);
 
-    // alerte temps ecoulé
+    // alerte du temps ecoulé
 
     const alertDiv = document.createElement('div');
     alertDiv.className = "absolute top-[52%] left-1/2 -translate-x-1/2 bg-white text-green-900 px-8 py-4 rounded-full shadow-2xl font-bold border-4 border-green-900 animate-bounce z-50 text-xl whitespace-nowrap shadow-[0_0_20px_rgba(255,255,255,0.5)]";
