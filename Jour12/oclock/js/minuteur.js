@@ -89,7 +89,8 @@ function triggerBirdAlert(message) {
     doorR.classList.add('door-right-open');
 
     setTimeout(() => {
-    bird.textContent = "🐥"; 
+    bird.src = "assets/images/woodstock_vol.png";
+    //bird.textContent = "🐥"; 
     bird.classList.add('bird-out'); //l'oiseau sort
     spring.classList.add('spring-out'); //le ressort s'étire
 
@@ -139,7 +140,8 @@ function triggerBirdAlert(message) {
         spring.classList.remove('spring-out'); //le ressort aussi
         
         setTimeout(() => {
-            bird.textContent = "🐣";
+            bird.src = "assets/images/woodstock_static.png";
+            //bird.textContent = "🐣";
             doorL.classList.remove('door-left-open');
             doorR.classList.remove('door-right-open');
         }, 1500);
