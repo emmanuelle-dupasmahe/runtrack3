@@ -112,27 +112,3 @@
 }
 
 /*responsive*/
-/* Media Query pour les petits écrans */
-@media (max-width: 640px) {
-    /* On réduit la taille du titre Coucouclock */
-    h1.text-6xl {
-        font-size: 3rem !important;
-        text-align: center;
-    }
-
-    /* On réduit un peu l'horloge pour laisser respirer les bords */
-    .w-full.max-w-[600px] {
-        transform: scale(0.9);
-        margin-top: -20px;
-    }
-
-    /* On ajuste le menu pour que les icônes ne se touchent pas */
-    nav {
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
-    }
-    
-    nav span.text-3xl {
-        font-size: 1.5rem;
-    }
-}
