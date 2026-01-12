@@ -85,72 +85,65 @@ function triggerBirdAlert(message) {
     const doorR = document.getElementById('door-right');
     const sound = document.getElementById('coucou-sound');
     
+    // Ouverture des portes
     doorL.classList.add('door-left-open');
     doorR.classList.add('door-right-open');
 
     setTimeout(() => {
-    bird.src = "assets/images/woodstock_vol.png";
-    //bird.textContent = "🐥"; 
-    bird.classList.add('bird-out'); //l'oiseau sort
-    spring.classList.add('spring-out'); //le ressort s'étire
+        bird.src = "assets/images/woodstock_vol.png";
+        bird.classList.add('bird-out'); 
+        spring.classList.add('spring-out'); 
 
+        if (sound) {
+            // SECURITÉ : On ne clone plus ! On réutilise l'objet existant.
+            sound.pause();
+            sound.currentTime = 0; 
 
-    //pour que le son coucou joue et se répète
-    if (sound) {
-        sound.pause(); // on stoppe toute lecture en cours
-        sound.currentTime = 0; // on remet à zéro
-        let repetitions = 0;
-        let intervalSon;
+            let repetitions = 0;
+            let intervalSon;
 
-        // fonction pour jouer le son 
-        const playCoucou = () => {
-            if (repetitions < 2) {
-            // explication temps de téléchargement est supérieur du son est > à l'affichage donc l'IA : On clone le nœud audio pour éviter que les sons se chevauchent ou se coupent
-                // C'est l'astuce ultime pour un son fluide !
-                const soundClone = sound.cloneNode();
+            const playCoucou = () => {
+                if (repetitions < 2) {
+                    // Au lieu de cloner, on remet juste au début
+                    sound.currentTime = 0;
+                    
+                    bird.classList.add('shake-active');
 
-                bird.classList.add('shake-active');//wwodstock bouge
+                    sound.play().catch(e => console.log("L'iPhone bloque le son sans interaction."));
+                    
+                    repetitions++;
+                    
+                    setTimeout(() => {
+                        bird.classList.remove('shake-active');
+                    }, 800);
+                } else {
+                    clearInterval(intervalSon);
+                }
+            };
 
-                soundClone.play().catch(e => console.log("Erreur lecture"));
-                repetitions++;
-                
-                setTimeout(() => {
-                bird.classList.remove('shake-active');
-            }, 800);
+            // On lance le cri après un petit délai
+            setTimeout(() => {
+                playCoucou();
+                intervalSon = setInterval(playCoucou, 1200);
+            }, 1500);
+        }
+    }, 400);
 
-            } else {
-                clearInterval(intervalSon);
-            }
-        };
-
-        // On lance le premier cri
-        // On lance l'intervalle pour les suivants
-        setTimeout(() => {
-        playCoucou();
-        intervalSon = setInterval(playCoucou, 1200);
-    },1500);
-    }
-    },400);
-
-    // alerte du temps ecoulé
-
+    // Alerte visuelle
     const alertDiv = document.createElement('div');
     alertDiv.className = "absolute top-[52%] left-1/2 -translate-x-1/2 bg-white text-green-900 px-8 py-4 rounded-full shadow-2xl font-bold border-4 border-green-900 animate-bounce z-50 text-xl whitespace-nowrap shadow-[0_0_20px_rgba(255,255,255,0.5)]";
-    
     alertDiv.innerText = message;
     
     const container = document.querySelector('.relative'); 
-    container.appendChild(alertDiv);
+    if (container) container.appendChild(alertDiv);
 
-
-    // après 5 secondes tout est remis en place
+    // Nettoyage après 6 secondes
     setTimeout(() => {
-        bird.classList.remove('bird-out');//l'oiseau rentre
-        spring.classList.remove('spring-out'); //le ressort aussi
+        bird.classList.remove('bird-out');
+        spring.classList.remove('spring-out'); 
         
         setTimeout(() => {
             bird.src = "assets/images/woodstock_static.png";
-            //bird.textContent = "🐣";
             doorL.classList.remove('door-left-open');
             doorR.classList.remove('door-right-open');
         }, 1500);

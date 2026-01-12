@@ -8,25 +8,27 @@
 </head>
 <body class="bg-[#064e3b] min-h-screen flex flex-col items-center p-8">
 
-    <div class="w-[600px] min-h-[650px] bg-wood-planks border-[12px] border-[#3e1f13] ring-inset ring-4 ring-[#7a3e24] rounded-t-[250px] shadow-2xl flex flex-col items-center overflow-hidden relative">
-    
-    <div class="w-0 h-0 border-l-[320px] border-l-transparent border-r-[320px] border-r-transparent border-b-[100px] border-b-[#3e1f13] absolute top-0 z-10 drop-shadow-lg"></div>
-    
-    
-    
-        <div class="absolute top-4 z-20 bg-[#8b4513] border-4 border-[#3e1f13] rounded-lg p-2 flex items-center justify-center w-28 h-20 shadow-lg  overflow-visible">
-    
-    <div id="door-left" class="absolute top-0 left-0 w-1/2 h-full bg-blue-200/30 border border-white/50 z-30 transition-transform duration-700 origin-left flex justify-end p-1">
-        <div class="w-1 h-full bg-white/20"></div> </div>
+    <div class="w-[600px] min-h-[700px] bg-wood-planks border-[12px] border-[#3e1f13] ring-inset ring-4 ring-[#7a3e24] rounded-t-[250px] shadow-2xl flex flex-col items-center overflow-hidden relative">
+        
+        <div class="absolute top-0 left-0 w-full h-[180px] bg-[#3e1f13] z-10 drop-shadow-lg" 
+             style="clip-path: polygon(50% 0%, 0% 100%, 100% 100%);">
+        </div>
+        
+        <div class="absolute top-20 z-20 bg-[#8b4513] border-4 border-[#3e1f13] rounded-lg p-2 flex items-center justify-center w-28 h-20 shadow-lg overflow-visible">
+            
+            <div id="door-left" class="absolute top-0 left-0 w-1/2 h-full bg-blue-200/30 border border-white/50 z-30 transition-transform duration-700 origin-left flex justify-end p-1">
+                <div class="w-1 h-full bg-white/20"></div> 
+            </div>
 
-    <div id="door-right" class="absolute top-0 right-0 w-1/2 h-full bg-blue-200/30 border border-white/50 z-30 transition-transform duration-700 origin-right flex justify-start p-1">
-        <div class="w-1 h-full bg-white/20"></div> </div>
+            <div id="door-right" class="absolute top-0 right-0 w-1/2 h-full bg-blue-200/30 border border-white/50 z-30 transition-transform duration-700 origin-right flex justify-start p-1">
+                <div class="w-1 h-full bg-white/20"></div> 
+            </div>
+
             <div id="bird-spring"></div>
             <img id="coucou-bird" src="assets/images/woodstock_static.png" alt="oiseau" class="w-16 h-16 object-contain">
-            <!--<span id="coucou-bird" class="text-4xl">🐣</span>-->
         </div>
 
-        <nav class="mt-32 w-full flex justify-around px-8 text-amber-100 font-bold border-b border-amber-900/50 pb-6 z-30">
+        <nav class="mt-56 w-full flex justify-around px-8 text-amber-100 font-bold border-b border-amber-900/50 pb-6 z-30">
             <button onclick="renderClock()" class="flex flex-col items-center hover:text-white transition">
                 <span class="text-3xl mb-1">🕒</span>
                 <span class="text-sm">Horloge</span>
