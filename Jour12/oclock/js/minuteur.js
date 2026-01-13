@@ -95,7 +95,7 @@ function triggerBirdAlert(message) {
         spring.classList.add('spring-out'); 
 
         if (sound) {
-            // SECURITÉ : On ne clone plus ! On réutilise l'objet existant.
+            
             sound.pause();
             sound.currentTime = 0; 
 
@@ -104,7 +104,7 @@ function triggerBirdAlert(message) {
 
             const playCoucou = () => {
                 if (repetitions < 2) {
-                    // Au lieu de cloner, on remet juste au début
+                    
                     sound.currentTime = 0;
                     
                     bird.classList.add('shake-active');
@@ -121,7 +121,7 @@ function triggerBirdAlert(message) {
                 }
             };
 
-            // On lance le cri après un petit délai
+            
             setTimeout(() => {
                 playCoucou();
                 intervalSon = setInterval(playCoucou, 1200);
@@ -129,7 +129,7 @@ function triggerBirdAlert(message) {
         }
     }, 400);
 
-    // Alerte visuelle
+    
     const alertDiv = document.createElement('div');
     alertDiv.className = "absolute top-[52%] left-1/2 -translate-x-1/2 bg-white text-green-900 px-8 py-4 rounded-full shadow-2xl font-bold border-4 border-green-900 animate-bounce z-50 text-xl whitespace-nowrap shadow-[0_0_20px_rgba(255,255,255,0.5)]";
     alertDiv.innerText = message;
@@ -137,7 +137,7 @@ function triggerBirdAlert(message) {
     const container = document.querySelector('.relative'); 
     if (container) container.appendChild(alertDiv);
 
-    // Nettoyage après 6 secondes
+    
     setTimeout(() => {
         bird.classList.remove('bird-out');
         spring.classList.remove('spring-out'); 
