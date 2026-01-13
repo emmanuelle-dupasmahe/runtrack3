@@ -6,9 +6,9 @@
 }
 
 .bg-wood-planks {
-    /* Couleur de base du bois */
+    
     background-color: #5d2e1a;
-    /* Création des lattes verticales */
+    
     background-image: repeating-linear-gradient(
         90deg,
         transparent,
@@ -16,7 +16,7 @@
         rgba(0, 0, 0, 0.3) 38px,
         rgba(0, 0, 0, 0.3) 40px
     );
-    /* Ajout d'un grain de bois léger par-dessus */
+    
     background-blend-mode: multiply;
 }
 
@@ -64,12 +64,12 @@
     transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* La porte gauche pivote */
+/* la porte gauche pivote */
 .door-left-open {
     transform: perspective(1000px) rotateY(-120deg) !important;
 }
 
-/* La porte droite pivote */
+/* la porte droite pivote */
 .door-right-open {
     transform: perspective(1000px) rotateY(120deg) !important;
 }
@@ -79,7 +79,7 @@
     position: absolute;
     top: 0;
     width: 10px;
-    height: 0; /* Caché au début */
+    height: 0;
     background: repeating-linear-gradient(
         0deg,
         #3e1f13,
@@ -88,16 +88,16 @@
         #7a3e24 20px
     );
     transition: all 1.5s ease-in-out;
-    z-index: 45; /* Entre les portes et l'oiseau */
+    z-index: 45; 
     border-radius: 4px;
 }
 
-/* Quand l'oiseau sort, le ressort s'étire vers le bas */
+/* quand l'oiseau sort, le ressort s'étire vers le bas */
 .spring-out {
     height: 100px !important; 
 }
 
-/* Animation de tremblement rapide pour le woodstock*/
+/* tremblement rapide de woodstock*/
 @keyframes woodstock-shake {
     0% { transform: translateY(100px) scale(2) rotate(0deg); }
     25% { transform: translateY(100px) scale(2) rotate(5deg); }
